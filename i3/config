@@ -209,6 +209,15 @@ bar {
         status_command $HOME/bin/conky-i3bar
         position top
         workspace_buttons yes
+	colors {
+		background #3f3f3f
+               	statusline #dcdccc
+
+	       	focused_workspace  #93b3a3 #3f3f3f #93b3a3
+	       	active_workspace   #ffcfaf #3f3f3f #ffcfaf
+		inactive_workspace #636363 #3f3f3f #dcdccc
+		urgent_workspace   #dca3a3 #3f3f3f #dca3a3
+	}
 }
 
 ## rules for workspaces
@@ -235,3 +244,9 @@ exec --no-startup-id i3-msg 'workspace $tag3; exec emacs; workspace $tag1'
 exec --no-startup-id i3-msg 'workspace $tag2; exec thunderbird; workspace $tag1'
 exec --no-startup-id i3-msg 'workspace $tag1; exec firefox; workspace $tag1'
 
+
+### COLORS
+client.focused              #688060 #688060 #303030 #ffcfaf
+client.focused_inactive     #3f3f3f #3F3F3F #7f9f7f #3f3f3f
+client.unfocused            #3f3f3f #3F3F3F #DCDCCC #3f3f3f
+client.urgent               #dca3a3 #dca3a3 #DCDCCC #3f3f3f
