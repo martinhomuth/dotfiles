@@ -1,0 +1,1 @@
+/home/martin/git/lambda-mod-zsh-theme/lambda-mod.zsh-theme
