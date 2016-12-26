@@ -136,7 +136,7 @@ export TERMINAL="urxvt"
 export PDFVIEW="mupdf"
 
 # Locations and PATH
-export JAVA_HOME='/usr/java/jdk1.8.0_77'
+export JAVA_HOME='/usr/java/jdk1.8.0_111'
 export INTELLIJ_HOME='/usr/local/intellij'
 export ECLIPSE_HOME='/usr/local/eclipse'
 export ANDROID_STUDIO_HOME='/media/hdd2/android-studio'
