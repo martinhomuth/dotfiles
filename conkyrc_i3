@@ -24,6 +24,7 @@ TEXT
 # JSON i3 bar
 
 [ \
+  { "full_text" : ${if_up tun0}"!!VPN!! "${else}""$endif, "separator" : true, "color" : "\#00ff00" },\
   { "full_text" : "⤴${upspeed enp3s0}", "separator" : false, "separator_block_width" : 1, "min_width" : 80, "color" : "\#c1ffc1"},\
   { "full_text" : " ⤵${downspeed enp3s0}", "min_width" : 80, "color" : "\#fff68f"},\
   { "full_text" : "♫ ${exec amixer get Master -M | grep -oE '[[:digit:]]*%' | head -n 1}"},\
