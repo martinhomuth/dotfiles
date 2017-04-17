@@ -133,6 +133,7 @@ export PICVIEW="feh"
 export SNDPLAY="mplayer"
 export TERMINAL="urxvt"
 export PDFVIEW="mupdf"
+export LOFFICE="libreoffice"
 
 # Locations and PATH
 export JAVA_HOME='/usr/java/jdk1.8.0_111'
@@ -153,6 +154,7 @@ for ext in png jpg gif; do alias -s $ext=$PICVIEW; done
 for ext in mpg wmv avi mkv; do alias -s $ext=$MOVPLAY; done
 for ext in wav mp3 ogg; do alias -s $ext=$SNDPLAY; done
 for ext in pdf; do alias -s $ext=$PDFVIEW; done
+for ext in odp ods odt; do alias -s $ext=$LOFFICE; done
 
 plugins=(git archlinux themes color-command)
 source $ZSH/oh-my-zsh.sh
