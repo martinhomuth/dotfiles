@@ -125,7 +125,6 @@ printf "+++Loaded files in %0.4f seconds\n" $(($end-$start))
 export T_EDITOR="emacsclient -t"
 export G_EDITOR="emacsclient -c"
 export EDITOR="emacsclient -t"
-export VISUAL="emacsclient -c"
 export ALTERNATE_EDITOR="emacs --daemon && emacsclient -t"
 export PAGER="less"
 export BROWSER="firefox"
