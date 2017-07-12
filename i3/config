@@ -23,17 +23,17 @@ set $tag9 "9:games"
 set $tag10 10
 
 # Applications
-set $fexplorer emelfm2
+set $fexplorer thunar
 
 # Monitors
-set $dmain DisplayPort-0
-set $dsec DVI-1
+set $dmain DP1
+set $dsec HDMI2
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font xft:DejaVu Sans Mono 10
+font xft:DejaVu Sans Mono 13
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -209,6 +209,27 @@ bar {
         status_command $HOME/bin/conky-i3bar
         position top
         workspace_buttons yes
+	output $dmain
+	tray_output primary
+	colors {
+		background #000000
+               	statusline #dcdccc
+
+	       	#focused_workspace  #93b3a3 #3f3f3f #93b3a3
+		#focused_workspace  #2e2e2e #3f3f3f #93b3a3
+	       	#active_workspace   #ffcfaf #3f3f3f #ffcfaf
+		#inactive_workspace #636363 #3f3f3f #dcdccc
+		#urgent_workspace   #dca3a3 #3f3f3f #dca3a3
+	}
+}
+
+bar {
+        id bar-2
+#        status_command $HOME/bin/conky-i3bar-sec
+	tray_output none
+        position top
+	workspace_buttons no
+	output $dsec
 	colors {
 		background #000000
                	statusline #dcdccc
@@ -247,7 +268,6 @@ exec --no-startup-id xset dpms 600
 exec --no-startup-id xautolock -time 10 -locker "i3lock -f -c 000000 -d"
 exec_always --no-startup-id ~/.i3/multi-screen.sh
 exec_always --no-startup-id "setxkbmap -option ctrl:nocaps"
-exec --no-startup-id compton -f -c -D4
 exec --no-startup-id owncloud
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg --bg-scale ~/Pictures/wallpaper.jpg
 
@@ -256,5 +276,18 @@ exec --no-startup-id i3-msg 'workspace $tag3; exec emacs; workspace $tag1'
 exec --no-startup-id i3-msg 'workspace $tag2; exec thunderbird; workspace $tag1'
 exec --no-startup-id i3-msg 'workspace $tag1; exec firefox; workspace $tag1'
 
+for_window [window_role="pop-up"] floating enable
 
 
+# class                 border  backgr. text    indicator child_border
+client.focused          #1e303d #1e303d #ffffff #2e9ef4   #1e303d
+client.focused_inactive #15212a #15212a #dbdbdb #292d2e   #15212a
+client.unfocused        #030406 #030406 #dbdbdb #292d2e   #030406
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
+
+# seafile stuff
+for_window [class="Seafile-applet"] floating enable, border normal
+for_window [class="seafile-applet"] floating enable, border normal
