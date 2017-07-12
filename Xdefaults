@@ -1,4 +1,5 @@
-URxvt.font	      : xft:DejaVu Sans Mono:normal:pixelsize=11:antialias=true:hinting=true
+!URxvt.font	      : xft:DejaVu Sans Mono:normal:pixelsize=15:antialias=true:hinting=true
+URxvt.font	      : xft:Ubuntu Mono:normal:pixelsize=18:antialias=true:hinting=true
 xterm*faceName: DejaVu Sans Mono Book
 xterm*faceSize: 11
 
