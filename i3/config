@@ -20,7 +20,7 @@ set $tag6 "6:misc"
 set $tag7 "7:misc"
 set $tag8 "8:sec"
 set $tag9 "9:games"
-set $tag10 10
+set $tag10 "sec"
 
 # Applications
 set $fexplorer thunar
@@ -130,8 +130,8 @@ bindsym $mod+t border toggle
 bindsym $mod+Shift+o move scratchpad
 bindsym $mod+o scratchpad show
 
-bindsym $mod+w focus output right
-bindsym $mod+q focus output left
+bindsym $mod+w focus output $dsec
+bindsym $mod+q focus output $dmain
 
 # MDP control
 bindsym $mod+Control+Left exec mpc prev
@@ -259,8 +259,9 @@ workspace $tag4 output $dmain
 workspace $tag5 output $dmain
 workspace $tag6 output $dmain
 workspace $tag7 output $dmain
-workspace $tag8 output $dsec
+workspace $tag8 output $dmain
 workspace $tag9 output $dmain
+workspace $tag10 output $dsec
 
 ## startup procedure
 exec --no-startup-id dunst -config ~/.dunstrc
