@@ -9,7 +9,7 @@ Xft.hinting           : true
 Xft.antialias         : true
 Xft.rgba              : rgb
 
-URxvt.perl-ext-common: default,matcher
+URxvt.perl-ext-common: default,matcher,font-size
 URxvt.matcher.button: 2
 URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 
@@ -69,3 +69,9 @@ XTerm*fullscreen: never
 ! white
 *.color7:       #ababab
 *.color15:      #f9f9f9
+
+
+! keybindings
+URxvt.keysym.C-Up : font-size:increase
+URxvt.keysym.C-Down : font-size:decrease
+URxvt.font-size.step : 8
