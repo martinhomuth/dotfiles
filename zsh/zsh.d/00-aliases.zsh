@@ -2,16 +2,12 @@
 
 # Directories
 alias C='clear'
-alias sV='sudo vim'
 alias l='ls'
 alias ll='ls -lisa'
 alias la='ls -lisa'
 alias ..='cd ..'
 alias ...='cd ..\..'
 alias cD='cd ~/Downloads'
-alias e='emacsclient -nw'
-alias ec='$G_EDITOR'
-alias %=' '
 
 # System
 alias lock='xscreensaver-command --lock'
@@ -53,6 +49,9 @@ alias wlanon='sudo systemctl start wlp3s0.service'
 
 # Editing
 alias sL='sudo leafpad'
+alias e="emacsclient -t"
+alias se="SUDO_EDITOR=\"emacsclient -t\" sudo -e"
+alias ee="emacsclient -t ~/.emacs.d/martin.org"
 
 # Awesome
 alias eA='$T_EDITOR ~/.config/awesome/rc.lua'
@@ -64,26 +63,8 @@ alias eZ='emacsclient -t ~/.zshrc'
 alias Z='source ~/.zshrc'
 alias comms='urxvt -e weechat \& && mcabber \& k'
 
-# Vim
-alias eV='vim ~/.vimrc'
-
 # Urxvt
 alias eX='emacsclient -t ~/.Xdefaults'
 
 # news
 alias rss='newsbeuter'
-
-# vpn
-alias tuvpn='sudo openconnect vpn.tu-berlin.de --script /etc/vpnc/vpnc-script'
-alias cgvpn='sudo openconnect -u martin --no-cert-check --script /etc/vpnc/vpnc-script lab.is-by.us'
-#echo -n QDRlhI9ZWSbpDgAh1mlH | 
-
-# jabref
-alias jabref='java -jar ~/bin/JabRef-2.10.jar &'
-
-# work
-alias syncwork='rsync -av mhomuth@192.168.64.40:/home/mhomuth/work/\* ~/work/ --max-size=3m'
-
-# openvpn
-alias vpn_cg='sudo vpnc ~/.config/vpnc/martin_vpnc.conf'
-#alias vpn_cg='openvpn --config ~/.config/openvpn/cg.ovpn'

@@ -220,9 +220,6 @@ _simple_extract()
         '*:Archive Or Uri:__archive_or_uri'
 }
 
-alias et=simple-extract
-alias se=simple-extract
-
 # define a word
 function define(){
     if [[ $# -ge 2 ]] then
