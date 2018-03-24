@@ -1,10 +1,14 @@
-echo -n "+++Reading .zshrc"
-[[ -o interactive ]] && echo -n " (for interactive use)"
-echo .
+# -*- mode: sh -*-
 
-# used for reporting how long loading takes
-zmodload zsh/datetime
-start=$EPOCHREALTIME
+if [ ! -z "${DEBUG}" ]; then
+	echo -n "+++Reading .zshrc"
+	[[ -o interactive ]] && echo -n " (for interactive use)"
+	echo .
+
+	# used for reporting how long loading takes
+	zmodload zsh/datetime
+	start=$EPOCHREALTIME
+fi
 
 # when globbing multiple items, one match results in success,
 # no match results in an error.
@@ -37,7 +41,7 @@ SAVEHIST=10000
 COMPLETION_WAITING_DOTS="true"
 
 # zsh completion
-if [ -d ~/.zsh.d/zsh-completions ] ; then
+if [ -s ~/.zsh.d/zsh-completions/zsh-completions.plugin.zsh ] ; then
     source ~/.zsh.d/zsh-completions/zsh-completions.plugin.zsh
 fi
 
@@ -111,15 +115,17 @@ key[PageDown]=${terminfo[knp]}
 # source .zsh.d
 setopt EXTENDED_GLOB
 for zshrc in ~/.zsh.d/[0-9][0-9]*[^~] ; do
-    if [[ ! -x $ZSHDEBUG ]]; then
+    if [[ ! -z ${DEBUG} ]]; then
         echo +++ $(basename $zshrc)
     fi
     source $zshrc
 done
 unsetopt EXTENDED_GLOB
 
-end=$EPOCHREALTIME
-printf "+++Loaded files in %0.4f seconds\n" $(($end-$start))
+if [ ! -z ${DEBUG} ]; then
+	end=$EPOCHREALTIME
+	printf "+++Loaded files in %0.4f seconds\n" $(($end-$start))
+fi
 
 # Default programs
 export T_EDITOR="emacsclient -t"
@@ -128,7 +134,7 @@ export EDITOR="emacsclient -t"
 export ALTERNATE_EDITOR="emacs --daemon && emacsclient -t"
 export PAGER="less"
 export BROWSER="firefox"
-export MOVPLAY="vlc"
+export MOVPLAY="mplayer"
 export PICVIEW="feh"
 export SNDPLAY="mplayer"
 export TERMINAL="urxvt"
