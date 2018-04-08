@@ -299,4 +299,42 @@ extract () {
   fi
 }
 
+function in_gentoo {
+	[[ -x /usr/bin/emerge ]]
+}
+
+function in_arch {
+	[[ -x /usr/bin/pacman ]]
+}
+
+# search for a package in the current distribution's package manager
+function s {
+	if [ ! $# -eq 1 ]; then
+		echo "Usage: s <search string>"
+		return
+	fi
+	if in_gentoo; then
+		eix "$1"
+	elif in_arch; then
+		pacman -Ss "$1"
+	else
+		echo "Unknown distribution"
+	fi
+}
+
+# installs a package in the current distribution's package manager
+function i {
+	if [ ! $# -eq 1 ]; then
+		echo "Usage: i <package>"
+		return
+	fi
+	if in_gentoo; then
+		sudo emerge -av "$1"
+	elif in_arch; then
+		sudo pacman -S "$1"
+	else
+		echo "Unknown distribution"
+	fi
+}
+
 

@@ -12,10 +12,16 @@ alias cD='cd ~/Downloads'
 # System
 alias lock='xscreensaver-command --lock'
 alias reboot='sudo reboot'
+if [ -x /usr/bin/emerge ]; then
+	alias updatedb="sudo eix-update && sudo emerge --sync"
+	alias update='sudo emerge -uDNa world && sudo emerge -uDNa system'
+elif [ -x /usr/bin/pacman ]; then
+	alias update="sudo pacman -Syuu"
+	alias updatedb="sudo pacman -Syuu --dbonly --noconfirm"
+else
+	alias update="echo unknown distribution"
+fi
 alias shutdown='sudo shutdown -hP now'
-alias update='sudo eix-update && sudo emerge --sync && sudo emerge -uDNa world && sudo emerge -uDNa system'
-alias i='sudo emerge -av'
-alias s='eix'
 alias systemctl='sudo systemctl'
 alias netctl='sudo netctl'
 alias k='exit'
