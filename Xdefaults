@@ -22,7 +22,10 @@ URxvt.scrollBar       : false
 xterm*loginshell: true
 
 ! I like a LOT of scrollback...
-*savelines: 800000
+URxvt.savelines: 65535
+URxvt.scrollstyle:      plain
+URxvt.secondaryScroll:  true
+xterm*saveLines: 10000
 
 ! double-click to select whole URLs :D
 xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
