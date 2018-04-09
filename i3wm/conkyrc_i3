@@ -24,8 +24,8 @@ TEXT
 # JSON i3 bar
 
 [ \
-  { "full_text" : "⤴${upspeed enp2s0}", "separator" : false, "separator_block_width" : 1, "min_width" : 80, "color" : "\#c1ffc1"},\
-  { "full_text" : " ⤵${downspeed enp2s0}", "min_width" : 80, "color" : "\#fff68f"},\
+  { "full_text" : "⤴${upspeed enp3s0}", "separator" : false, "separator_block_width" : 1, "min_width" : 80, "color" : "\#c1ffc1"},\
+  { "full_text" : " ⤵${downspeed enp3s0}", "min_width" : 80, "color" : "\#fff68f"},\
   { "full_text" : "♫ ${exec amixer get Master -M | grep -oE '[[:digit:]]*%' | head -n 1}"},\
   { "full_text" : "/home", "separator" : false},\
   { "full_text" : "${fs_used_perc /home}%", "color" :
@@ -33,6 +33,9 @@ TEXT
   { "full_text" : "/data", "separator" : false},\
   { "full_text" : "${fs_used_perc /data}%", "color" :
     ${if_match ${fs_used_perc /data}>90}"\#ff0000"${else}${if_match ${fs_used_perc /data}>70}"\#ffff00"${else}"\#ffffff"${endif}${endif}},\
+  { "full_text" : "/ssd", "separator" : false},\
+  { "full_text" : "${fs_used_perc /data/ssd}%", "color" :
+    ${if_match ${fs_used_perc /data/ssd}>90}"\#ff0000"${else}${if_match ${fs_used_perc /data/ssd}>70}"\#ffff00"${else}"\#ffffff"${endif}${endif}},\
   { "full_text" : "/extern", "separator" : false},\
   { "full_text" : "${fs_used_perc /data/extern}%", "color" :
     ${if_match ${fs_used_perc /data/extern}>90}"\#ff0000"${else}${if_match ${fs_used_perc /data/extern}>70}"\#ffff00"${else}"\#ffffff"${endif}${endif}},\
