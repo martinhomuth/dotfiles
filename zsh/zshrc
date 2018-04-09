@@ -142,16 +142,16 @@ export PDFVIEW="mupdf"
 export LOFFICE="libreoffice"
 
 # Locations and PATH
-export JAVA_HOME='/usr/java/jdk1.8.0_111'
-export INTELLIJ_HOME='/usr/local/intellij'
+#export JAVA_HOME='/opt/java/jdk-9.0.4'
+export INTELLIJ_HOME='/opt/intellij'
 export ECLIPSE_HOME='/usr/local/eclipse'
 export ANDROID_STUDIO_HOME='/media/hdd2/android-studio'
-export ANDROID_SDK_HOME='/media/hdd2/android-sdk-linux/platform-tools'
-export XDG_CONFIG_HOME='/home/martin/.config/'
-export CROSSTOOL_NG='/home/martin/x-tools/arm-unknown-eabi/'
+export ANDROID_SDK_HOME='/data/android/sdk/'
+export XDG_CONFIG_HOME='${HOME}/.config/'
+export CROSSTOOL_NG='${HOME}/x-tools/arm-unknown-eabi/'
 export CPPUTEST_HOME='/opt/cpputest/'
 export XULRUNNER_PATH='/opt/xulrunner/xulrunner'
-export CONKEROR_PATH='/home/martin/git/conkeror/application.ini'
+export CONKEROR_PATH='${HOME}/git/conkeror/application.ini'
 
 # File Extensions
 for ext in html org php com net no; do alias -s $ext=$BROWSER; done
@@ -165,6 +165,14 @@ for ext in odp ods odt; do alias -s $ext=$LOFFICE; done
 plugins=(git archlinux themes color-command)
 source $ZSH/oh-my-zsh.sh
 
+export QT_SELECT=qt5
+
+# fallback make version
+export MAKE382=/opt/make-3.82/bin
+
+export USE_CCACHE=1
+export CCACHE_DIR=/data/android/.ccache
+
 # path
 path=(~/bin
       $JAVA_HOME/bin
@@ -173,5 +181,10 @@ path=(~/bin
       $ANDROID_STUDIO_HOME/bin
       $JAVA_HOME/include
       $ECLIPSE_HOME/bin
-      $ANDROID_SDK_HOME
+      $ANDROID_SDK_HOME/platform-tools
+      $ANDROID_SDK_HOME/tools
+      $E2FACTORY_HOME/bin
+      $MAKE382
+      $TAF_UNIDOS/bin
       $path)
+
