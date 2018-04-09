@@ -1,6 +1,7 @@
-URxvt.font	      : xft:Ubuntu Mono:normal:pixelsize=18:antialias=true:hinting=true
-xterm*faceName: DejaVu Sans Mono Book
+URxvt.font	      : xft:SourceCodePro:normal:size=12:antialias=true:hinting=true
+xterm*faceName: SourceCodePro
 xterm*faceSize: 11
+Emacs.font: SourceCodePro-14
 
 !XFT
 Xft.lcdfilter         : lcddefault
