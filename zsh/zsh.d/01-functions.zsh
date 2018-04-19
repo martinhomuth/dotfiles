@@ -324,14 +324,14 @@ function s {
 
 # installs a package in the current distribution's package manager
 function i {
-	if [ ! $# -eq 1 ]; then
+	if [ ! $# -gt 1 ]; then
 		echo "Usage: i <package>"
 		return
 	fi
 	if in_gentoo; then
-		sudo emerge -av "$1"
+		sudo emerge -av "$@"
 	elif in_arch; then
-		sudo pacman -S "$1"
+		sudo pacman -S "$@"
 	else
 		echo "Unknown distribution"
 	fi
