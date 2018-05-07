@@ -324,7 +324,7 @@ function s {
 
 # installs a package in the current distribution's package manager
 function i {
-	if [ ! $# -gt 1 ]; then
+	if [ ! $# -ge 1 ]; then
 		echo "Usage: i <package>"
 		return
 	fi
