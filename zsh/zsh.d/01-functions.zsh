@@ -337,4 +337,10 @@ function i {
 	fi
 }
 
+function sgrep {
+	find . -name .repo -prune -o -name .git -prune -o  -type f -iregex '.*\.\(c\|h\|cc\|cpp\|S\|java\|xml\|sh\|mk\|aidl\)' -print0 | xargs -0 grep --color -n "$@"
+}
 
+function bgrep {
+	find . -name .repo -prune -o -name .git -prune -o  -type f -iregex 'build-script' -print0 | xargs -0 grep --color -n "$@"
+}
