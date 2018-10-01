@@ -14,11 +14,11 @@ set $tag9 "9:games"
 set $tag10 10
 
 # Applications
-set $fexplorer pcmanfm
+set $fexplorer thunar
 
 # Monitors
-set $dmain eDP1
-set $dsec DP-1
+set $dmain DP2
+set $dsec HDMI3
 
 # input key delay
 # see `xset -q`
@@ -202,9 +202,10 @@ bindsym $mod+Control+q mode "Exit: (q)uit, (r)estart, (x)reload"
 # desktop main monitor top bar
 bar {
         id bar-1
-        status_command /usr/bin/i3blocks -c ~/.i3/i3blocks/top.conf
+        status_command /usr/bin/i3blocks -c ~/.i3/i3blocks/bottom.conf
         position bottom
         workspace_buttons no
+	output $dmain
 	colors {
 		background #000000
                	statusline #dcdccc
@@ -229,7 +230,7 @@ workspace $tag5 output $dmain
 workspace $tag6 output $dmain
 workspace $tag7 output $dmain
 workspace $tag8 output $dsec
-workspace $tag9 output $dmain
+workspace $tag9 output $dsec
 
 for_window [window_role="popup"] floating enable
 #for_window [class=".*"] floating enable
@@ -239,13 +240,12 @@ for_window [window_role="popup"] floating enable
 exec --no-startup-id dunst -config ~/.dunstrc
 exec --no-startup-id xset dpms 0
 
-exec --no-startup-id compton
 exec_always --no-startup-id xset r rate $REPEAT_DELAY $REPEAT_RATE
 
 # just make sure it is always active
 exec_always --no-startup-id "setxkbmap -option ctrl:nocaps"
 exec --no-startup-id owncloud
-exec_always --no-startup-id feh --bg-scale ~/Pictures/* -z
+exec_always --no-startup-id feh --bg-center ~/pictures/wallpaper.jpg --bg-center ~/pictures/wallpaper.jpg
 
 # applications
 
