@@ -147,11 +147,11 @@ export INTELLIJ_HOME='/opt/intellij'
 export ECLIPSE_HOME='/usr/local/eclipse'
 export ANDROID_STUDIO_HOME='/media/hdd2/android-studio'
 export ANDROID_SDK_HOME='/data/android/sdk/'
-export XDG_CONFIG_HOME='${HOME}/.config/'
-export CROSSTOOL_NG='${HOME}/x-tools/arm-unknown-eabi/'
+export XDG_CONFIG_HOME="${HOME}/.config/"
+export CROSSTOOL_NG="${HOME}/x-tools/arm-unknown-eabi/"
 export CPPUTEST_HOME='/opt/cpputest/'
 export XULRUNNER_PATH='/opt/xulrunner/xulrunner'
-export CONKEROR_PATH='${HOME}/git/conkeror/application.ini'
+export CONKEROR_PATH="${HOME}/git/conkeror/application.ini"
 
 # File Extensions
 for ext in html org php com net no; do alias -s $ext=$BROWSER; done
