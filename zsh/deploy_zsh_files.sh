@@ -8,6 +8,10 @@ else
 	error() {
 		printf "ERROR: %s" "$@"
 	}
+
+	warning() {
+		printf "WARNING: %s" "$@"
+	}
 fi
 
 if [ ! $UID -eq 0 ]; then
@@ -38,11 +42,10 @@ ZSHDIR="zsh.d"
 ZSHDIRTARGET="/home/${SUDO_USER}/.zsh.d"
 OHMYZSH="oh-my-zsh"
 OHMYZSHTARGET="/home/${SUDO_USER}/.oh-my-zsh"
-
-# create array of [file in repository : file target ]
-# iterate over array
-# if target file does not exist
-# link file to the target location
+ZLOGOUT="zlogout"
+ZLOGOUTTARGET="/home/${SUDO_USER}/.zlogout"
+ETCZLOGOUT="etc-logout"
+ETCZLOGOUTTARGET="/etc/zlogout"
 
 declare -A fileArray=(
 	[${ZSHENV}]=${ZSHENVTARGET}
@@ -55,6 +58,8 @@ declare -A fileArray=(
 	[${ETCZLOGIN}]=${ETCZLOGINTARGET}
 	[${ZSHDIR}]=${ZSHDIRTARGET}
 	[${OHMYZSH}]=${OHMYZSHTARGET}
+	[${ZLOGOUT}]=${ZLOGOUTTARGET}
+	[${ETCZLOGOUT}]=${ETCZLOGOUTTARGET}
 )
 
 for K in "${!fileArray[@]}"; do
