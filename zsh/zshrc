@@ -170,6 +170,10 @@ export QT_SELECT=qt5
 # fallback make version
 export MAKE382=/opt/make-3.82/bin
 
+# work
+export E2FACTORY_HOME=/opt/emlix/e2factory-2.3.17
+export E2TMPDIR=/data/ssd/tmp
+
 export USE_CCACHE=1
 export CCACHE_DIR=/data/android/.ccache
 
