@@ -1,5 +1,7 @@
 # -*- mode: sh -*-
 
+# run for interactive shells
+
 if [ ! -z "${DEBUG}" ]; then
 	echo -n "+++Reading .zshrc"
 	[[ -o interactive ]] && echo -n " (for interactive use)"
