@@ -79,6 +79,11 @@ zstyle ':completion:*' file-list list=20 insert=10
 # options
 setopt auto_cd
 
+# don't set high nice values for background jobs by default
+setopt no_bg_nice
+# enable (which is default) function arg zero
+setopt function_arg_zero
+
 # autoloads
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
