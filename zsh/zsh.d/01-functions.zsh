@@ -349,3 +349,12 @@ function sgrep {
 function bgrep {
 	find . -name .repo -prune -o -name .git -prune -o  -type f -iregex 'build-script' -print0 | xargs -0 grep --color -n "$@"
 }
+
+# emacs calling function replacing the simple alias
+function e {
+    if [[ -x /usr/bin/emacs ]]; then
+	emacsclient -t "$@"
+    else
+	error "Emacs is not available"
+    fi
+}

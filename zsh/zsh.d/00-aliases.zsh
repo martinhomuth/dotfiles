@@ -55,7 +55,6 @@ alias wlanon='sudo systemctl start wlp3s0.service'
 
 # Editing
 alias sL='sudo leafpad'
-alias e="emacsclient -t"
 alias se="SUDO_EDITOR=\"emacsclient -t\" sudo -e"
 alias ee="emacsclient -t ~/.emacs.d/martin.org"
 
