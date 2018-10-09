@@ -57,7 +57,9 @@ if [ -s ~/.zsh.d/zsh-autosuggestions/zsh-autosuggestions.zsh ] ; then
     source ~/.zsh.d/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-autoload -U compinit zrecompile
+autoload -U compinit zrecompile promptinit
+compinit
+promptinit; prompt gentoo
 
 zstyle ':completion:::::' completer _complete _approximate
 zstyle ':completion:*' use-cache on
