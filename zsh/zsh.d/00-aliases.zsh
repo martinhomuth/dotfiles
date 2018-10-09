@@ -2,6 +2,7 @@
 
 # Directories
 alias C='clear'
+alias se="sudo -i ${USER} emacsclient -t"
 alias l='ls'
 alias ll='ls -lisa'
 alias la='ls -lisa'

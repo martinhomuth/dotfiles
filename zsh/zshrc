@@ -41,6 +41,7 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 COMPLETION_WAITING_DOTS="true"
+export SUDO_EDITOR="emacsclient -t"
 
 # zsh completion
 if [ -s ~/.zsh.d/zsh-completions/zsh-completions.plugin.zsh ] ; then
