@@ -14,7 +14,7 @@ else
 	}
 fi
 
-if [ ! $UID -eq 0 ]; then
+if [ ! "x$1" = "x-u" -a ! $UID -eq 0 ]; then
 	error "Must be executed as root"
 fi
 
@@ -22,45 +22,53 @@ if [ ! -f /bin/zsh ]; then
 	error "zsh not available"
 fi
 
+# replace USER with the sudo user if necessary
+USER=${SUDO_USER:=$USER}
+
 ZSHENV="zshenv"
-ZSHENVTARGET="/home/${SUDO_USER}/.zshenv"
+ZSHENVTARGET="/home/${USER}/.zshenv"
 ETCZSHENV="etc-zshenv"
 ETCZSHENVTARGET="/etc/zshenv"
 ZPROFILE="zprofile"
-ZPROFILETARGET="/home/${SUDO_USER}/.zprofile"
+ZPROFILETARGET="/home/${USER}/.zprofile"
 ETCZPROFILE="etc-zprofile"
 ETCZPROFILETARGET="/etc/zprofile"
 ZSHRC="zshrc"
-ZSHRCTARGET="/home/${SUDO_USER}/.zshrc"
+ZSHRCTARGET="/home/${USER}/.zshrc"
 ETCZSHRC="etc-zshrc"
 ETCZSHRCTARGET="/etc/zshrc"
 ZLOGIN="zlogin"
-ZLOGINTARGET="/home/${SUDO_USER}/.zlogin"
+ZLOGINTARGET="/home/${USER}/.zlogin"
 ETCZLOGIN="etc-zlogin"
 ETCZLOGINTARGET="/etc/zlogin"
 ZSHDIR="zsh.d"
-ZSHDIRTARGET="/home/${SUDO_USER}/.zsh.d"
+ZSHDIRTARGET="/home/${USER}/.zsh.d"
 OHMYZSH="oh-my-zsh"
-OHMYZSHTARGET="/home/${SUDO_USER}/.oh-my-zsh"
+OHMYZSHTARGET="/home/${USER}/.oh-my-zsh"
 ZLOGOUT="zlogout"
-ZLOGOUTTARGET="/home/${SUDO_USER}/.zlogout"
+ZLOGOUTTARGET="/home/${USER}/.zlogout"
 ETCZLOGOUT="etc-logout"
 ETCZLOGOUTTARGET="/etc/zlogout"
 
 declare -A fileArray=(
 	[${ZSHENV}]=${ZSHENVTARGET}
-	[${ETCZSHENV}]=${ETCZSHENVTARGET}
 	[${ZPROFILE}]=${ZPROFILETARGET}
-	[${ETCZPROFILE}]=${ETCZPROFILETARGET}
 	[${ZSHRC}]=${ZSHRCTARGET}
-	[${ETCZSHRC}]=${ETCZSHRCTARGET}
 	[${ZLOGIN}]=${ZLOGINTARGET}
-	[${ETCZLOGIN}]=${ETCZLOGINTARGET}
 	[${ZSHDIR}]=${ZSHDIRTARGET}
 	[${OHMYZSH}]=${OHMYZSHTARGET}
 	[${ZLOGOUT}]=${ZLOGOUTTARGET}
-	[${ETCZLOGOUT}]=${ETCZLOGOUTTARGET}
 )
+
+if [ ! "x$1" = "x-u" ]; then
+    fileArray+=(
+	[${ETCZLOGIN}]=${ETCZLOGINTARGET}
+	[${ETCZSHRC}]=${ETCZSHRCTARGET}
+	[${ETCZPROFILE}]=${ETCZPROFILETARGET}
+	[${ETCZSHENV}]=${ETCZSHENVTARGET}
+	[${ETCZLOGOUT}]=${ETCZLOGOUTTARGET}
+    )
+fi
 
 for K in "${!fileArray[@]}"; do
 
