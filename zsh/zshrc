@@ -59,7 +59,7 @@ fi
 
 autoload -U compinit zrecompile promptinit
 compinit
-promptinit; prompt gentoo
+promptinit;
 
 zstyle ':completion:::::' completer _complete _approximate
 zstyle ':completion:*' use-cache on
