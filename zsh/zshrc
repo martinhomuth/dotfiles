@@ -1,7 +1,6 @@
 # -*- mode: sh -*-
 
 # run for interactive shells
-
 if [ ! -z "${DEBUG}" ]; then
 	echo -n "+++Reading .zshrc"
 	[[ -o interactive ]] && echo -n " (for interactive use)"
@@ -152,16 +151,14 @@ export PDFVIEW="mupdf"
 export LOFFICE="libreoffice"
 
 # Locations and PATH
-#export JAVA_HOME='/opt/java/jdk-9.0.4'
+DATAPATH=/media/hdd2
+DEVPATH=${DATAPATH}
 export INTELLIJ_HOME='/opt/intellij'
-export ECLIPSE_HOME='/usr/local/eclipse'
-export ANDROID_STUDIO_HOME='/media/hdd2/android-studio'
-export ANDROID_SDK_HOME='/data/android/sdk/'
+export ANDROID_STUDIO_HOME="${DEVPATH}/android-studio"
+export ANDROID_SDK_ROOT="${DEVPATH}/android-sdk-linux"
 export XDG_CONFIG_HOME="${HOME}/.config/"
-export CROSSTOOL_NG="${HOME}/x-tools/arm-unknown-eabi/"
 export CPPUTEST_HOME='/opt/cpputest/'
-export XULRUNNER_PATH='/opt/xulrunner/xulrunner'
-export CONKEROR_PATH="${HOME}/git/conkeror/application.ini"
+export SBT_HOME="/opt/sbt"
 
 # File Extensions
 for ext in html org php com net no; do alias -s $ext=$BROWSER; done
@@ -182,7 +179,7 @@ export MAKE382=/opt/make-3.82/bin
 
 # work
 export E2FACTORY_HOME=/opt/emlix/e2factory-2.3.17
-export E2TMPDIR=/data/ssd/tmp
+export E2TMPDIR=/tmp
 
 export USE_CCACHE=1
 export CCACHE_DIR=/data/android/.ccache
@@ -195,10 +192,11 @@ path=(~/bin
       $ANDROID_STUDIO_HOME/bin
       $JAVA_HOME/include
       $ECLIPSE_HOME/bin
-      $ANDROID_SDK_HOME/platform-tools
-      $ANDROID_SDK_HOME/tools
+      $ANDROID_SDK_ROOT/platform-tools
+      $ANDROID_SDK_ROOT/tools
       $E2FACTORY_HOME/bin
       $MAKE382
       $TAF_UNIDOS/bin
+      $SBT_HOME/bin
       $path)
 
