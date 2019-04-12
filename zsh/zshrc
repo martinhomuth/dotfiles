@@ -179,10 +179,14 @@ export MAKE382=/opt/make-3.82/bin
 
 # work
 export E2FACTORY_HOME=/opt/emlix/e2factory-2.3.17
-export E2TMPDIR=/tmp
-
+if [[ "$(hostname)" == "mobile"* ]]; then
+	export E2TMPDIR=/data/tmp
+	export CCACHE_DIR=/data/android/.ccache
+else
+	export E2TMPDIR=/data/ssd/tmp
+	export CCACHE_DIR=/data/ssd/android/.ccache
+fi
 export USE_CCACHE=1
-export CCACHE_DIR=/data/android/.ccache
 
 # path
 path=(~/bin
