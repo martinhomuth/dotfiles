@@ -1,7 +1,7 @@
 URxvt.font	      : xft:DejaVu Sans Mono:bold:size=6:antialias=true:hinting=true
 xterm*faceName: DejaVu Sans Mono
 xterm*faceSize: 6
-Emacs.font: DejaVu Sans Mono-8
+Emacs.font: DejaVu Sans Mono-7
 
 !XFT
 Xft.lcdfilter         : lcddefault
