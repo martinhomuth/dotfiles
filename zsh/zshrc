@@ -191,20 +191,26 @@ else
 	export CCACHE_DIR=/data/ssd/android/.ccache
 fi
 export USE_CCACHE=1
+export TOOLCHAINS_ROOT=${DATAPATH}/toolchains
+# odroid Android toolchains
+#http://releases.linaro.org/archive/14.09/components/toolchain/binaries/gcc-linaro-aarch64-none-elf-4.9-2014.09_linux.tar.xz
+#http://releases.linaro.org/archive/14.04/components/toolchain/binaries/gcc-linaro-arm-none-eabi-4.8-2014.04_linux.tar.xz
+#https://releases.linaro.org/components/toolchain/binaries/6.3-2017.05/aarch64-linux-gnu/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-linux-gnu.tar.xz
+export ODROID_ANDROID_TOOLCHAINS=(
+	${TOOLCHAINS_ROOT}/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-linux-gnu/bin
+	${TOOLCHAINS_ROOT}/gcc-linaro-aarch64-none-elf-4.9-2014.09_linux/bin
+	${TOOLCHAINS_ROOT}/gcc-linaro-arm-none-eabi-4.8-2014.04_linux/bin
+)
 
-# path
-path=(~/bin
-      $JAVA_HOME/bin
-      $INTELLIJ_HOME/bin
-      $CROSSTOOL_NG/bin
-      $ANDROID_STUDIO_HOME/bin
-      $JAVA_HOME/include
-      $ECLIPSE_HOME/bin
-      $ANDROID_SDK_ROOT/platform-tools
-      $ANDROID_SDK_ROOT/tools
-      $E2FACTORY_HOME/bin
-      $MAKE382
-      $TAF_UNIDOS/bin
-      $SBT_HOME/bin
-      $path)
-
+path=(
+	$HOME/bin
+	$INTELLIJ_HOME/bin
+	$ANDROID_STUDIO_HOME/bin
+	$ODROID_ANDROID_TOOLCHAINS
+	$ANDROID_SDK_ROOT/platform-tools
+	$ANDROID_SDK_ROOT/tools
+	$E2FACTORY_HOME/bin
+	$MAKE382
+	$TAF_UNIDOS/bin
+	$SBT_HOME/bin
+)
