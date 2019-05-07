@@ -151,7 +151,11 @@ export PDFVIEW="mupdf"
 export LOFFICE="libreoffice"
 
 # Locations and PATH
-DATAPATH=/media/hdd2
+if [[ "$(hostname)" == "mobile"* ]]; then
+	DATAPATH=/data
+else
+	DATAPATH=/media/hdd2
+fi
 DEVPATH=${DATAPATH}
 export INTELLIJ_HOME='/opt/intellij'
 export ANDROID_STUDIO_HOME="${DEVPATH}/android-studio"
