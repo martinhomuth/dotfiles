@@ -358,4 +358,22 @@ function e {
 		error "Emacs is not available"
 	fi
 }
+# ssh function to connect to emlix workstation
+function emlix {
+	local vpn=0
+	declare -i ret=0
+
+	if [ -z ${workstation} ] || [ -z ${workgate} ] || [ -z ${workssh} ]; then
+		error "Need to define variables, see 02-secrets.zsh"
+	fi
+
+	grep "tun[0-9]" /proc/net/dev &>/dev/null && vpn=1
+
+	if [[ ${vpn} = 1 ]]; then
+		ping -c 1 ${workstation} &>/dev/null && ret=1 && ssh ${workstation}
+	else
+		ping -c 1 ${workgate} &>/dev/null && ret=1 && ssh ${workssh}
+	fi
+
+	[ ${ret} -eq 0 ] && error "failed"
 }
