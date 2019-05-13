@@ -403,3 +403,42 @@ function emlix {
 
 	[ ${ret} -eq 0 ] && error "failed"
 }
+
+# ensure to not shutdown SSHed machines by accident
+function shutdown {
+	SHUTDOWN="sudo shutdown -fh now"
+	if [ ! "x${SSH_CLIENT}" = "x" -o ! "x${SSH_CONNECTION}" = "x" ]; then
+		echo -n "Are you sure you want to shutdown SSH'ed machine $(hostname)? (y/N) "
+		read resp
+		case $resp in
+			[Yy]* ) eval ${SHUTDOWN};;
+			* ) echo "aborting...";;
+                esac
+	else
+		eval ${SHUTDOWN}
+	fi
+}
+
+# ensure to not rebooting SSHed machines by accident
+function reboot {
+	REBOOT="sudo reboot"
+	if [ ! "x${SSH_CLIENT}" = "x" -o ! "x${SSH_CONNECTION}" = "x" ]; then
+		echo -n "Are you sure you want to reboot remote machine $(hostname)? (y/N) "
+		read ret
+		case $ret in
+			[Yy]* ) eval ${REBOOT};;
+			* ) echo "aborting...";;
+		esac
+	else
+		eval ${REBOOT}
+	fi
+}
+
+function smount {
+	sudo mount "$@"
+}
+
+function sumount {
+	sudo umount "$@"
+}
+
