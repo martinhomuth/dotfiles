@@ -102,9 +102,6 @@ bindkey -e
 bindkey "^?" backward-delete-char
 typeset -A key
 
-# locale
-export LC_ALL=C
-
 key[Home]=${terminfo[khome]}
 
 key[End]=${terminfo[kend]}
