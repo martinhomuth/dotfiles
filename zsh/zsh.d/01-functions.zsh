@@ -352,9 +352,10 @@ function bgrep {
 
 # emacs calling function replacing the simple alias
 function e {
-    if [[ -x /usr/bin/emacs ]]; then
-	emacsclient -t "$@"
-    else
-	error "Emacs is not available"
-    fi
+	if [[ -x /usr/bin/emacs ]]; then
+		emacsclient -t "$@"
+	else
+		error "Emacs is not available"
+	fi
+}
 }
