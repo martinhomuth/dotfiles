@@ -11,6 +11,12 @@ if [ ! -z "${DEBUG}" ]; then
 	start=$EPOCHREALTIME
 fi
 
+if [ ! -f /usr/local/include/common.sh ]; then
+	echo "ERROR: no common.sh found"
+else
+	source /usr/local/include/common.sh
+fi
+
 # when globbing multiple items, one match results in success,
 # no match results in an error.
 setopt CSH_NULL_GLOB
