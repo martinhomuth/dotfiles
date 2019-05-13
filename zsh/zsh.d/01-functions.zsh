@@ -358,6 +358,32 @@ function e {
 		error "Emacs is not available"
 	fi
 }
+
+# WIP
+# function that is intended to be used for toggling the debug output of the shell
+# during a function execution
+function toggledebug {
+	RUN=/tmp/zsh-toggledebug
+
+	declare -i was_set=0
+	declare -i need_toggle=0
+
+	echo $- | grep x &>/dev/null && was_set=1
+	if [ ${was_set} -eq 0 ]; then
+		if [ -f ${RUN} ]; then
+			echo "ERROR: run file ${RUN} should not exist"
+		else
+			set -x
+			touch ${RUN}
+		fi
+	else
+		if [ -f ${RUN} ]; then
+			rm ${RUN}
+			set +x
+		fi
+	fi
+}
+
 # ssh function to connect to emlix workstation
 function emlix {
 	local vpn=0
