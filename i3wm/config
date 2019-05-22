@@ -164,8 +164,9 @@ for_window [window_role="popup"] floating enable
 ### GAPS
 
 smart_gaps on
-gaps outer 10
-gaps inner 7
+smart_borders on
+gaps outer -2
+gaps inner 14
 
 ### MODES
 
