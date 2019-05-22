@@ -260,7 +260,7 @@ bindsym $mod+Control+q mode "Exit: (q)uit, (r)estart, (x)reload"
 bar {
         id bar-1
         status_command /usr/bin/i3blocks -c ~/.i3/i3blocks/bottom.conf
-        position bottom
+        position top
         workspace_buttons no
 	output $dmain
 	colors {
