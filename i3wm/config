@@ -1,17 +1,7 @@
-# My i3-wm configuration
+# My i3 configuration
+# This should be useable on every system that I use
 
 set $mod Mod4
-
-set $tag1 "1:web"
-set $tag2 "2:com"
-set $tag3 "3:dev"
-set $tag4 "4:sys"
-set $tag5 "5:media"
-set $tag6 "6:misc"
-set $tag7 "7:misc"
-set $tag8 "8:sec"
-set $tag9 "9:games"
-set $tag10 10
 
 # Applications
 set $fexplorer thunar
@@ -93,29 +83,56 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+Shift+x exec i3lock -c 000000
 
+# workspace related configuration
+set $ws1 "1:web"
+set $ws2 "2:com"
+set $ws3 "3:dev"
+set $ws4 "4:sys"
+set $ws5 "5:media"
+set $ws6 "6:misc"
+set $ws7 "7:misc"
+set $ws8 "8:sec"
+set $ws9 "9:games"
+set $ws10 10
+
 # switch to workspace
-bindsym $mod+1 workspace $tag1
-bindsym $mod+2 workspace $tag2
-bindsym $mod+3 workspace $tag3
-bindsym $mod+4 workspace $tag4
-bindsym $mod+5 workspace $tag5
-bindsym $mod+6 workspace $tag6
-bindsym $mod+7 workspace $tag7
-bindsym $mod+8 workspace $tag8
-bindsym $mod+9 workspace $tag9
-bindsym $mod+0 workspace $tag10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $tag1
-bindsym $mod+Shift+2 move container to workspace $tag2
-bindsym $mod+Shift+3 move container to workspace $tag3
-bindsym $mod+Shift+4 move container to workspace $tag4
-bindsym $mod+Shift+5 move container to workspace $tag5
-bindsym $mod+Shift+6 move container to workspace $tag6
-bindsym $mod+Shift+7 move container to workspace $tag7
-bindsym $mod+Shift+8 move container to workspace $tag8
-bindsym $mod+Shift+9 move container to workspace $tag9
-bindsym $mod+Shift+0 move container to workspace $tag10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# open applications in specific workspaces
+assign [class="Thunderbird"] $ws1
+assign [class="Firefox"] $ws1
+
+# ensure workspaces are always in the same output layout
+workspace $ws1 output $dmain
+workspace $ws2 output $dmain
+workspace $ws3 output $dmain
+workspace $ws4 output $dmain
+workspace $ws5 output $dmain
+workspace $ws6 output $dmain
+workspace $ws7 output $dmain
+workspace $ws8 output $dsec
+workspace $ws9 output $dsec
 
 bindsym $mod+t border toggle
 bindsym $mod+Shift+o move scratchpad
@@ -342,17 +359,6 @@ client.urgent           #000000 #000000 #ff0000 #000000   #000000
 client.placeholder      #000000 #000000 #000000 #000000   #000000
 
 client.background       #ffffff
-
-## rules for workspaces
-workspace $tag1 output $dmain
-workspace $tag2 output $dmain
-workspace $tag3 output $dmain
-workspace $tag4 output $dmain
-workspace $tag5 output $dmain
-workspace $tag6 output $dmain
-workspace $tag7 output $dmain
-workspace $tag8 output $dsec
-workspace $tag9 output $dsec
 
 for_window [class="^.*"] border pixel 0
 for_window [window_role="popup"] floating enable
