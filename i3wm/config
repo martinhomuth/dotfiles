@@ -5,8 +5,9 @@ set $mod Mod4
 
 # Applications
 set $fexplorer thunar
+set $terminal urxvt
 
-# Monitors
+# Monitors (need to adjust)
 set $dmain DisplayPort-1
 set $dsec DVI-D-0
 
@@ -15,23 +16,17 @@ set $dsec DVI-D-0
 set $REPEAT_DELAY 250
 set $REPEAT_RATE 60
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:Terminus 6
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec urxvt
-
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -nb '#000' -nf '#fff' -sb '#f00' -sf '#fff' -fn 'DejaVu Sans-14:ExtraLight'
+# start dmenu
+# TODO: adjust colors to used theme
+bindsym $mod+d exec dmenu_run -nb '#000' -nf '#fff' -sb '#f00' -sf '#fff' -fn 'DejaVu Sans-10:ExtraLight'
 
 # change focus
 bindsym $mod+h focus left
@@ -57,11 +52,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+c split h
-
-# split in vertical orientation
-bindsym $mod+v split v
+# toggle split orientation
+bindsym $mod+t split toggle;exec notify-send 'tile split toggled'
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -158,6 +150,8 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 
 # Application Shortcuts
 bindsym $mod+e exec $fexplorer
+bindsym $mod+Return exec $terminal
+
 
 ### GAPS
 
