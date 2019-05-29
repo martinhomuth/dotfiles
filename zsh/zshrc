@@ -106,7 +106,6 @@ bindkey "^?" backward-delete-char
 typeset -A key
 
 key[Home]=${terminfo[khome]}
-
 key[End]=${terminfo[kend]}
 key[Insert]=${terminfo[kich1]}
 key[Delete]=${terminfo[kdch1]}
@@ -164,12 +163,15 @@ DATAPATH=/data
 DEVPATH=${DATAPATH}
 ANDROIDPATH=${DATAPATH}/android
 export INTELLIJ_HOME='/opt/intellij'
-export ANDROID_STUDIO_HOME="${ANDROIDPATH}/android-studio"
-export ANDROID_SDK_ROOT="${ANDROIDPATH}/android-sdk"
+export ANDROID_STUDIO_HOME="${DEVPATH}/android-studio"
+export ANDROID_SDK_ROOT="${DEVPATH}/android-sdk-linux"
+export ANDROID_STUDIO_HOME='/data/android/android-studio'
+export ANDROID_SDK='/data/android/sdk/'
 export XDG_CONFIG_HOME="${HOME}/.config/"
 export CPPUTEST_HOME='/opt/cpputest/'
 export SBT_HOME="/opt/sbt"
 export TURTL_HOME="/opt/turtl"
+export EXERCISM_HOME="/opt/exercism"
 
 # File Extensions
 for ext in html org php com net no; do alias -s $ext=$BROWSER; done
@@ -203,18 +205,26 @@ export ODROID_ANDROID_TOOLCHAINS=(
 	${TOOLCHAINS_ROOT}/gcc-linaro-arm-none-eabi-4.8-2014.04_linux/bin
 )
 
+export CCACHE_DIR=/data/android/.ccache
+
+# path
 path=(
 	$HOME/.local/bin
 	$HOME/bin
+	/usr/sbin
+	$JAVA_HOME/bin
 	$INTELLIJ_HOME/bin
+	$CROSSTOOL_NG/bin
 	$ANDROID_STUDIO_HOME/bin
-	$ODROID_ANDROID_TOOLCHAINS
-	$ANDROID_SDK_ROOT/platform-tools
-	$ANDROID_SDK_ROOT/tools
+	$JAVA_HOME/include
+	$ANDROID_SDK_HOME/platform-tools
+	$ANDROID_SDK_HOME/tools
 	$E2FACTORY_HOME/bin
 	$MAKE382
 	$TAF_UNIDOS/bin
-	$SBT_HOME/bin
+	/data/software/mxs-utils-2011.08.0/bin
+	$EXERCISM_HOME
 	$TURTL_HOME
 	$path
 )
+
