@@ -8,15 +8,15 @@ set $fexplorer thunar
 set $terminal urxvt
 
 # Monitors
-set $dmain DisplayPort-0
-set $dsec HDMI-A-1
+set $dmain DP1
+set $dsec HDMI2
 
 # input key delay
 # see `xset -q`
 set $REPEAT_DELAY 250
 set $REPEAT_RATE 60
 
-font pango:DejaVu Sans Mono 6
+font pango:DejaVu Sans Mono 10
 new_window pixel 1
 new_float normal
 hide_edge_borders none
@@ -256,6 +256,7 @@ bar {
         id bar-1
         status_command /usr/bin/i3blocks -c ~/.i3/i3blocks/blocks.conf
         position top
+        workspace_buttons yes
 	output $dmain
 	colors {
 		background #FFFFFF
