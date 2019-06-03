@@ -114,10 +114,6 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-# open applications in specific workspaces
-assign [class="Thunderbird"] $ws1
-assign [class="Firefox"] $ws1
-
 # ensure workspaces are always in the same output layout
 workspace $ws1 output $dmain
 workspace $ws2 output $dmain
