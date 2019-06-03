@@ -222,4 +222,5 @@ path=(
 	$MAKE382
 	$TAF_UNIDOS/bin
 	$SBT_HOME/bin
+	$path
 )
