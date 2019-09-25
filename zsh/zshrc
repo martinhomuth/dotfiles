@@ -156,16 +156,12 @@ export TERMINAL="urxvt"
 export PDFVIEW="mupdf"
 export LOFFICE="libreoffice"
 
-# Locations and PATH
-if [[ "$(hostname)" == "mobile"* ]]; then
-	DATAPATH=/data
-else
-	DATAPATH=/media/hdd2
-fi
+DATAPATH=/data
 DEVPATH=${DATAPATH}
+ANDROIDPATH=${DATAPATH}/android
 export INTELLIJ_HOME='/opt/intellij'
-export ANDROID_STUDIO_HOME="${DEVPATH}/android-studio"
-export ANDROID_SDK_ROOT="${DEVPATH}/android-sdk-linux"
+export ANDROID_STUDIO_HOME="${ANDROIDPATH}/android-studio"
+export ANDROID_SDK_ROOT="${ANDROIDPATH}/android-sdk"
 export XDG_CONFIG_HOME="${HOME}/.config/"
 export CPPUTEST_HOME='/opt/cpputest/'
 export SBT_HOME="/opt/sbt"
@@ -193,8 +189,8 @@ if [[ "$(hostname)" == "mobile"* ]]; then
 	export E2TMPDIR=/data/tmp
 	export CCACHE_DIR=/data/android/.ccache
 else
-	export E2TMPDIR=/data/ssd/tmp
-	export CCACHE_DIR=/data/ssd/android/.ccache
+	export E2TMPDIR=/data/tmp
+	export CCACHE_DIR=/data/android/.ccache
 fi
 export USE_CCACHE=1
 export TOOLCHAINS_ROOT=${DATAPATH}/toolchains
