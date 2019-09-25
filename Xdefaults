@@ -4,6 +4,7 @@ xterm*faceSize: 6
 Emacs.font: DejaVu Sans Mono-7
 
 !XFT
+Xft.dpi               : 180
 Xft.lcdfilter         : lcddefault
 Xft.hintstyle         : hintslight
 Xft.hinting           : true
@@ -44,41 +45,41 @@ XTerm*fullscreen: never
 *.font: xft:SourceCodePro:normal:size=8:antialias=true:hinting=true
 
 ! special
-*.foreground:   #ffffff
-*.background:   #000000
-*.cursorColor:  #ffffff
+*.foreground:   #373b41
+*.background:   #ffffff
+*.cursorColor:  #373b41
 
 ! black
-*.color0:       #000000
-*.color8:       #555753
+*.color0:       #1d1f21
+*.color8:       #969896
 
 ! red
-*.color1:       #cc0000
-*.color9:       #ef2929
+*.color1:       #cc342b
+*.color9:       #cc342b
 
 ! green
-*.color2:       #4e9a06
-*.color10:      #8ae234
+*.color2:       #198844
+*.color10:      #198844
 
 ! yellow
-*.color3:       #c4a000
-*.color11:      #fce94f
+*.color3:       #fba922
+*.color11:      #fba922
 
 ! blue
-*.color4:       #3465a4
-*.color12:      #729fcf
+*.color4:       #3971ed
+*.color12:      #3971ed
 
 ! magenta
-*.color5:       #75507b
-*.color13:      #ad7fa8
+*.color5:       #a36ac7
+*.color13:      #a36ac7
 
 ! cyan
-*.color6:       #06989a
-*.color14:      #34e2e2
+*.color6:       #3971ed
+*.color14:      #3971ed
 
 ! white
-*.color7:       #d3d7cf
-*.color15:      #eeeeec
+*.color7:       #c5c8c6
+*.color15:      #ffffff
 
 
 ! keybindings
