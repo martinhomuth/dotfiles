@@ -1,5 +1,7 @@
 [global]
-font = Monospace 18
+font = Monospace 12
+background = "#ffffff"
+foreground = "#000000"
 
 # Allow a small subset of html markup:
 #   <b>bold</b>
@@ -11,7 +13,7 @@ font = Monospace 18
 # <http://developer.gnome.org/pango/stable/PangoMarkupFormat.html>.
 # If markup is not allowed, those tags will be stripped out of the
 # message.
-allow_markup = yes
+markup = yes
 
 # The format of the message.  Possible variables are:
 #   %a  appname
@@ -94,7 +96,7 @@ monitor = 0
 # 
 # If this option is set to mouse or keyboard, the monitor option
 # will be ignored.
-follow = mouse
+#follow = mouse
 
 # Should a notification popped up from history be sticky or timeout
 # as if it would normally do.
@@ -145,12 +147,11 @@ browser = /usr/bin/firefox -new-tab
 icon_position = off
 
 # Paths to default icons.
-icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
-[frame]
-    width = 1
-    color = "#dcdccc"
-
+frame_width = 1
+frame_color = "#dcdccc"
+bgcolor = "#ffffff"
 
 [shortcuts]
 
