@@ -289,4 +289,4 @@ exec_always --no-startup-id xset r rate $REPEAT_DELAY $REPEAT_RATE
 exec_always --no-startup-id "setxkbmap -option ctrl:nocaps"
 exec --no-startup-id compton -c
 exec --no-startup-id nextcloud
-exec --no-startup-id nitrogen --restore
+exec --no-startup-id ~/.screenlayout/asdf.sh
