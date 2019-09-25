@@ -396,9 +396,9 @@ function emlix {
 	grep "tun[0-9]" /proc/net/dev &>/dev/null && vpn=1
 
 	if [[ ${vpn} = 1 ]]; then
-		ping -c 1 ${workstation} &>/dev/null && ret=1 && ssh ${workstation}
+		ping -c 1 ${workstation} &>/dev/null && ret=1 && ssh -i ~/.ssh/${work_ssh_key} mhomuth@${workstation}
 	else
-		ping -c 1 ${workgate} &>/dev/null && ret=1 && ssh ${workssh}
+		ping -c 1 ${workgate} &>/dev/null && ret=1 && ssh -i ~/.ssh/${work_ssh_key} mhomuth@${workssh}
 	fi
 
 	[ ${ret} -eq 0 ] && error "failed"
