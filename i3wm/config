@@ -7,16 +7,16 @@ set $mod Mod4
 set $fexplorer thunar
 set $terminal urxvt
 
-# Monitors (need to adjust)
-set $dmain DisplayPort-1
-set $dsec DVI-D-0
+# Monitors
+set $dmain DisplayPort-0
+set $dsec HDMI-A-1
 
 # input key delay
 # see `xset -q`
 set $REPEAT_DELAY 250
 set $REPEAT_RATE 60
 
-font pango:Terminus 6
+font pango:DejaVu Sans Mono 6
 new_window pixel 1
 new_float normal
 hide_edge_borders none
