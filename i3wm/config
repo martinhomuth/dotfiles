@@ -125,7 +125,6 @@ workspace $ws7 output $dmain
 workspace $ws8 output $dsec
 workspace $ws9 output $dsec
 
-bindsym $mod+t border toggle
 bindsym $mod+Shift+o move scratchpad
 bindsym $mod+o scratchpad show
 
