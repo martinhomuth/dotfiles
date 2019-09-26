@@ -1,4 +1,4 @@
-URxvt.font	      : xft:SourceCodePro:bold:size=10:antialias=true:hinting=true
+URxvt.font	      : xft:SourceCodePro:size=10:antialias=true:hinting=true
 xterm*faceName: SourceCodePro
 xterm*faceSize: 10
 Emacs.font: SourceCodePro-10
@@ -19,16 +19,12 @@ URxvt*xftAntialias: true
 xterm*ScrollBar       : false
 URxvt.scrollBar       : false
 
-*.transparent	      : true
+*.transparent	      : false
 *.shading	      : 25
 *.fading	      : 15
 
 ! Every shell is a login shell by default (for inclusion of all necessary environment variables)
 xterm*loginshell: true
-
-*.transparent	  : true
-*.shading	  : 10
-URxvt.fading: 	  15
 
 ! I like a LOT of scrollback...
 URxvt.savelines: 65535
