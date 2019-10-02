@@ -5,7 +5,7 @@ fzf_available() {
 
 # lists all installable packages
 li() {
-	fzf_available || echo "fzf not installed"
+	fzf_available || { echo "fzf not installed" && return 1 }
 
 	command -v eix >/dev/null || echo "eix not available"
 
