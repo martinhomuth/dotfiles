@@ -7,9 +7,9 @@ set $mod Mod4
 set $fexplorer thunar
 set $terminal urxvt
 
-# Monitors
-set $dmain DisplayPort-0
-set $dsec HDMI-A-1
+# Monitors (need to adjust)
+set $dmain eDP1
+set $dsec HDMI1
 
 # input key delay
 # see `xset -q`
