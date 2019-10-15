@@ -8,15 +8,15 @@ set $fexplorer thunar
 set $terminal urxvt
 
 # Monitors (need to adjust)
-set $dmain eDP1
-set $dsec HDMI1
+set $dmain ${MAINMONITOR}
+set $dsec ${SECONDARYMONITOR}
 
 # input key delay
 # see `xset -q`
 set $REPEAT_DELAY 250
 set $REPEAT_RATE 60
 
-font xft:Source Code Pro 10
+font xft:${FONTNAME} ${FONTSIZE}
 new_window pixel 1
 new_float normal
 hide_edge_borders none
@@ -29,7 +29,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu
 # TODO: adjust colors to used theme
-bindsym $mod+d exec dmenu_run -nb '#000' -nf '#fff' -sb '#f00' -sf '#fff' -fn 'DejaVu Sans-10:ExtraLight'
+bindsym $mod+d exec dmenu_run -nb '#000' -nf '#fff' -sb '#f00' -sf '#fff' -fn '${FONTNAME}-${FONTSIZE}:ExtraLight'
 
 # change focus
 bindsym $mod+h focus left
@@ -256,6 +256,8 @@ bar {
         id bar-1
         status_command /usr/bin/i3blocks -c ~/.i3/i3blocks/blocks.conf
         position top
+        workspace_buttons yes
+	strip_workspace_numbers yes
 	output $dmain
 	colors {
 		background #FFFFFF
@@ -282,10 +284,12 @@ client.background       #FFFFFF
 ## startup procedure
 # daemons
 exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
 exec --no-startup-id dunst -config ~/.dunstrc
 exec --no-startup-id xset dpms 0
+exec --no-startup-id nextcloud
+exec --no-startup-id nitrogen --restore
+
+# stuff to set always
 exec_always --no-startup-id xset r rate $REPEAT_DELAY $REPEAT_RATE
 exec_always --no-startup-id "setxkbmap -option ctrl:nocaps"
-exec --no-startup-id compton -c
-exec --no-startup-id nextcloud
-exec --no-startup-id ~/.screenlayout/asdf.sh
