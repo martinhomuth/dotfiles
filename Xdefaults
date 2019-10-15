@@ -1,7 +1,9 @@
-URxvt.font	      : xft:Source Code Pro:size=7:antialias=true:hinting=true
-xterm*faceName: Source Code Pro,Source Code Pro Semibold
-xterm*faceSize: 7
-Emacs.font: SourceCodePro-7
+!!!! FONTS n stuff !!!!
+
+URxvt.font	      : xft:${FONTNAME}:bold:size=${FONTSIZE}:antialias=true:hinting=true
+xterm*faceName	      : ${FONTNAME}
+xterm*faceSize	      : ${FONTSIZE}
+Emacs.font	      : ${FONTNAME}-${FONTSIZE}
 
 !XFT
 Xft.dpi               : 180
@@ -11,38 +13,44 @@ Xft.hinting           : true
 Xft.antialias         : true
 Xft.rgba              : rgb
 
-URxvt.perl-ext-common: default,matcher,font-size
-URxvt.matcher.button: 2
-URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
-
-URxvt*xftAntialias: true
-xterm*ScrollBar       : false
-URxvt.scrollBar       : false
-
-*.transparent	      : true
+*.transparent	      : false
 *.shading	      : 25
 *.fading	      : 15
 
+!!!! Urxvt !!!!
+
+URxvt.perl-ext-common : default,matcher,font-size
+URxvt.matcher.button  : 2
+URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+URxvt*xftAntialias    : true
+URxvt.scrollBar       : false
+
+URxvt.saveLines       : 65535
+URxvt.scrollstyle     : plain
+URxvt.secondaryScroll : true
+
+URxvt.keysym.C-Up     : font-size:increase
+URxvt.keysym.C-Down   : font-size:decrease
+URxvt.font-size.step  : 1
+
+!!!! XTerm !!!!
+
+xterm*ScrollBar       : false
 ! Every shell is a login shell by default (for inclusion of all necessary environment variables)
-xterm*loginshell: true
+xterm*loginshell      : true
 
 ! I like a LOT of scrollback...
-URxvt.savelines: 65535
-URxvt.scrollstyle:      plain
-URxvt.secondaryScroll:  true
-xterm*saveLines: 10000
-
+XTerm*saveLines       : 65535
 ! double-click to select whole URLs :D
-xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+XTerm*charClass	      : 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
 
 ! stop output to terminal from jumping down to bottom of scroll again
-xterm*scrollTtyOutput: false
+XTerm*scrollTtyOutput : false
+XTerm*eightBitInput   : false
+XTerm*eightBitOutput  : true
+XTerm*fullscreen      : never
 
-XTerm*eightBitInput:   false
-XTerm*eightBitOutput:  true
-XTerm*fullscreen: never
-
-*.font: xft:SourceCodePro:normal:size=8:antialias=true:hinting=true
+!!!! Colors !!!!
 
 ! special
 *.foreground:   #373b41
