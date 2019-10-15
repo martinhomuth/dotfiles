@@ -34,3 +34,7 @@ sed -i "s/\${SECONDARYMONITOR}/${SECONDARYMONITOR}/g" ${TGT}
 sed -i "s/\${FONTNAME}/${FONTNAME}/g" ${TGT}
 sed -i "s/\${FONTSIZE}/${FONTSIZE}/g" ${TGT}
 
+FILE=i3wm/i3status.conf
+TGT="${HOME}/.i3/i3status.conf"
+mkdir -pv $(dirname ${TGT})
+cp ${FILE} ${TGT}
