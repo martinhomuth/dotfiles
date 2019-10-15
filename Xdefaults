@@ -1,6 +1,6 @@
 !!!! FONTS n stuff !!!!
 
-URxvt.font	      : xft:${FONTNAME}:bold:size=${FONTSIZE}:antialias=true:hinting=true
+URxvt.font	      : xft:${FONTNAME}:size=${FONTSIZE}:antialias=true:hinting=true
 xterm*faceName	      : ${FONTNAME}
 xterm*faceSize	      : ${FONTSIZE}
 Emacs.font	      : ${FONTNAME}-${FONTSIZE}
@@ -12,6 +12,7 @@ Xft.hintstyle         : hintslight
 Xft.hinting           : true
 Xft.antialias         : true
 Xft.rgba              : rgb
+Xft.dpi               : 192
 
 *.transparent	      : false
 *.shading	      : 25
@@ -32,6 +33,9 @@ URxvt.secondaryScroll : true
 URxvt.keysym.C-Up     : font-size:increase
 URxvt.keysym.C-Down   : font-size:decrease
 URxvt.font-size.step  : 1
+
+URxvt.keysym.Shift-Control-V:     eval:paste_clipboard
+URxvt.keysym.Shift-Control-C:     eval:selection_to_clipboard
 
 !!!! XTerm !!!!
 
