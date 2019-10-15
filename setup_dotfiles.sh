@@ -38,3 +38,7 @@ FILE=i3wm/i3status.conf
 TGT="${HOME}/.i3/i3status.conf"
 mkdir -pv $(dirname ${TGT})
 cp ${FILE} ${TGT}
+
+# zsh
+
+zsh/deploy_zsh_files.sh
