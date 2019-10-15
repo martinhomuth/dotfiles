@@ -2,8 +2,8 @@
 
 # zsh startup file deployment script
 
-if [ -f "/usr/local/include/common.sh" ]; then
-	. "/usr/local/include/common.sh"
+if [ -f "/usr/include/mh_common.sh" ]; then
+	. "/usr/include/mh_common.sh"
 else
 	error() {
 		printf "ERROR: %s" "$@"
