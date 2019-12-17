@@ -442,3 +442,18 @@ function sumount {
 	sudo umount "$@"
 }
 
+# takes an e2factory result and extracts it
+# arg1: name of the result
+# arg2: [optioal] location to extract to
+# if no destination is given, the result will be extracted to its own
+# location
+function extract_result {
+	local res=$1
+	local dest=${2:-"out/${res}/last"}
+	if [ -z ${res} ] || [ ! -d out/${res} ]; then
+		echo "No result given or not in a e2factory project"
+		return 1
+	fi
+
+	tar xf "out/${res}/last/result.tar" -C "${dest}"
+}
