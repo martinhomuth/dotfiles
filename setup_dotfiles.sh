@@ -42,3 +42,7 @@ cp ${FILE} ${TGT}
 # zsh
 
 zsh/deploy_zsh_files.sh
+
+# polybar
+
+install -D .config/polybar/config ~/.config/polybar/config
