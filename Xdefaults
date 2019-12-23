@@ -20,8 +20,6 @@ xterm*ScrollBar       : false
 URxvt.scrollBar       : false
 
 *.transparent	      : false
-*.shading	      : 25
-*.fading	      : 15
 
 ! Every shell is a login shell by default (for inclusion of all necessary environment variables)
 xterm*loginshell: true
