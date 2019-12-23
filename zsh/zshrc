@@ -153,6 +153,7 @@ export MOVPLAY="mplayer"
 export PICVIEW="feh"
 export SNDPLAY="mplayer"
 export TERMINAL="urxvt"
+export FEXPLORER="thunar"
 export PDFVIEW="mupdf"
 export LOFFICE="libreoffice"
 
