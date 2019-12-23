@@ -165,6 +165,7 @@ assign [title="starface | STARFACE Callmanager - Mozilla Firefox"] $ws8
 for_window [class="KeePass2"] floating enable
 for_window [class="firefox"] border pixel 1
 for_window [instance="emacs"] floating enable resize set width 3000 px height 2000 px move position center
+for_window [instance="Msgcompose"] floating enable
 
 ### GAPS
 
