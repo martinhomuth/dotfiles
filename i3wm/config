@@ -26,16 +26,17 @@ floating_modifier $mod
 
 # kill focused window
 bindsym $mod+Shift+q kill
+bindsym $mod+Return exec $terminal
 
 # start dmenu
 # TODO: adjust colors to used theme
 bindsym $mod+d exec dmenu_run -nb '#000' -nf '#fff' -sb '#f00' -sf '#fff' -fn '${FONTNAME}-${FONTSIZE}:ExtraLight'
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+h border pixel 1;focus left;border pixel 2;
+bindsym $mod+j border pixel 1;focus down;border pixel 2;
+bindsym $mod+k border pixel 1;focus up;border pixel 2;
+bindsym $mod+l border pixel 1;focus right;border pixel 2;
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -79,15 +80,15 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+x exec i3lock -c 000000
 
 # workspace related configuration
-set $ws1 "1:web"
-set $ws2 "2:com"
-set $ws3 "3:dev"
-set $ws4 "4:sys"
-set $ws5 "5:media"
-set $ws6 "6:misc"
-set $ws7 "7:misc"
-set $ws8 "8:sec"
-set $ws9 "9:games"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
 set $ws10 10
 
 # switch to workspace
@@ -147,20 +148,20 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 
 # Application Shortcuts
-bindsym $mod+e exec $fexplorer
-bindsym $mod+Return exec $terminal
+#bindsym $mod+e exec $fexplorer
 
 # application specific settings
 for_window [class="Lxappearance"] floating enable sticky enable border normal
 for_window [class="Pavucontrol"] floating enable
 for_window [class="KeePass2"] floating enable
 for_window [window_role="popup"] floating enable
+for_window [class="firefox"] border pixel 1
+for_window [instance="emacs"] floating enable resize set width 3000 px height 2000 px move position center
 
 ### GAPS
 
-smart_borders on
-gaps outer 0
-gaps inner 5
+gaps outer -2
+gaps inner 14
 
 ### MODES
 
@@ -209,16 +210,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize grow width 10 px or 10 ppt
-        bindsym j resize shrink height 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink width 10 px or 10 ppt
+        bindsym h resize grow width 10 px
+        bindsym j resize shrink height 10 px
+        bindsym k resize grow height 10 px
+        bindsym l resize shrink width 10 px
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 10 px
+        bindsym Down resize grow height 10 px
+        bindsym Up resize shrink height 10 px
+        bindsym Right resize grow width 10 px
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -228,15 +229,14 @@ mode "resize" {
 bindsym $mod+shift+r mode "resize"
 
 mode "move" {
-     bindsym h move left 20 px or 20 ppt
-     bindsym j move down 20 px or 20 ppt
-     bindsym k move up 20 px or 20 ppt
-     bindsym l move right 20 px or 20 ppt
+     bindsym h move left 20 px
+     bindsym j move down 20 px
+     bindsym k move up 20 px
+     bindsym l move right 20 px
 
      bindsym Return mode "default"
      bindsym Escape mode "default"
 }
-
 bindsym $mod+shift+m mode "move"
 
 
@@ -252,44 +252,40 @@ bindsym $mod+Control+q mode "Exit: (q)uit, (r)estart, (x)reload"
 
 ### BARS
 # desktop main monitor top bar
-bar {
-        id bar-1
-        status_command /usr/bin/i3blocks -c ~/.i3/i3blocks/blocks.conf
-        position top
-        workspace_buttons yes
-	strip_workspace_numbers yes
-	output $dmain
-	colors {
-		background #FFFFFF
-		statusline #232323
-		separator  #666666
+#bar {
+        # id bar-1
+        # status_command /usr/bin/i3status -c ~/.i3/i3status.conf
+        # position top
+        # workspace_buttons yes
+	# strip_workspace_numbers yes
+	# output $dmain
+	# colors {
+	# 	background #000000
+        #        	statusline #dcdccc
+	# }
+#}
 
-		focused_workspace  #000000 #B1B1B1 #343434
-		active_workspace   #000000 #DFDFDF #414141
-		inactive_workspace #B1B1B1 #FFFFFF #888888
-		urgent_workspace   #2F343A #900000 #FFFFFF
-		binding_mode       #2F343A #900000 #FFFFFF
-	}
-}
+# class                 border  backgr. text    indicator child_border
+client.focused          #696969 #000000 #999999 #000000   #696969
+client.focused_inactive #d3d3d3 #000000 #888888 #000000   #d3d3d3
+client.unfocused        #d3d3d3 #000000 #555555 #000000   #d3d3d3
+client.urgent           #000000 #000000 #ff0000 #000000   #000000
+client.placeholder      #000000 #000000 #000000 #000000   #000000
 
-# class                 border  bground text    indicator child_border
-client.focused          #333333 #434443 #FFFFFF #2E9EF4   #285577
-client.focused_inactive #333333 #848484 #FFFFFF #484E50   #5F676A
-client.unfocused        #333333 #222222 #888888 #292D2E   #222222
-client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
-client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
-
-client.background       #FFFFFF
+client.background       #ffffff
 
 ## startup procedure
 # daemons
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-exec --no-startup-id dunst -config ~/.dunstrc
+exec --no-startup-id dunst -c ~/.config/dunst/dunstrc
 exec --no-startup-id xset dpms 0
 exec --no-startup-id nextcloud
-exec --no-startup-id nitrogen --restore
+exec --no-startup-id sxhkd
+exec --no-startup-id picom
 
 # stuff to set always
 exec_always --no-startup-id xset r rate $REPEAT_DELAY $REPEAT_RATE
 exec_always --no-startup-id "setxkbmap -option ctrl:nocaps"
+exec_always --no-startup-id ~/bin/polybar_wrapper
+
