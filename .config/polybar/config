@@ -42,6 +42,37 @@ magenta = ${xrdb:color13:#d3869b}
 cyan = ${xrdb:color14:#8ec07c}
 white = ${xrdb:color15:#ebdbb2}
 
+[bar/top]
+monitor = ${env:MONITOR:eDP1}
+monitor-fallback = eDP1
+width = 100%
+height = 50
+bottom = false
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 3
+line-color = #f00
+font-0 = DejavuSansMono:size=11;4
+font-1 = NotoSansCJKJP:size=11;4
+font-2 = Font Awesome 5 Brands Regular:style=Regular:pixelsize=11;4
+font-3 = Font Awesome 5 Free Solid:style=Solid:pixelsize=11;4
+font-4 = Font Awesome 5 Free Regular:style=Regular:pixelsize=11;4
+font-5 = DejaVu Sans:style=Regular:pixelsize=11;4
+font-6 = mono:pixelsize=11;1
+font-7 = Symbols Nerd Font:style=Regular:pixelsize=11;1
+font-8 = Noto Color Emoji:scale=10:style=Regular:pixelsize=11;2
+font-9 = Symbola:pixelsize=11;1
+modules-left =
+modules-center = i3
+modules-right = date
+;wm-restack = bspwm
+wm-restack = i3
+dpi-x = 192
+dpi-y = 192
+module-margin-right = 4
+padding-right = 1
+
 [bar/bottom]
 
 ; Use either of the following command to list available outputs:
@@ -117,7 +148,7 @@ border-color = #ffffffff
 ; Individual side values can be defined using:
 ;   padding-{left,right}
 padding-left = 0
-padding-right = 2
+padding-right = 1
 
 module-margin-left = 1
 ;module-margin-right = 2
@@ -133,14 +164,15 @@ font-7 = Symbols Nerd Font:style=Regular:pixelsize=11;1
 font-8 = Noto Color Emoji:scale=10:style=Regular:pixelsize=11;2
 font-9 = Symbola:pixelsize=11;1
 
-modules-left = i3
-modules-center = xwindow
-modules-right = filesystem pulseaudio memory cpu wlan battery temperature date
+modules-left =
+modules-center =
+modules-right = filesystem pulseaudio memory cpu wlan vpn battery temperature
 
 tray-position = right
 tray-padding = 5
 tray-background = ${colors.background}
 tray-scale = 1.0
+tray-maxsize = 50
 
 ;wm-restack = bspwm
 wm-restack = i3
@@ -164,26 +196,6 @@ override-redirect = false
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
-
 [module/filesystem]
 type = internal/fs
 interval = 10
@@ -196,11 +208,12 @@ label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
 type = internal/bspwm
+format = <label-state> <label-mode>
 
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 
-label-mode-padding = 2
+label-mode-padding = 1
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
@@ -213,6 +226,12 @@ label-focused-padding = 1
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %icon%
 label-unfocused-padding = 1
+
+label-occupied = %icon%
+label-occupied-padding = 1
+
+label-empty = %icon%
+label-empty-padding = 1
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %icon%
@@ -231,6 +250,9 @@ ws-icon-2 = 3;
 ws-icon-3 = 4;
 ws-icon-4 = 5;
 ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
 ws-icon-default = 
 
 [module/i3]
@@ -242,9 +264,9 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+label-mode-padding = 1
+label-mode-foreground = ${colors.white}
+label-mode-background = ${colors.darkred}
 
 ; focused = Active workspace on focused monitor
 label-focused = %icon%
@@ -287,7 +309,7 @@ label = %percentage:2%%
 
 format = <ramp-coreload>
 
-ramp-coreload-spacing = 1
+ramp-coreload-spacing = 0
 ramp-coreload-0 = ▁
 ramp-coreload-1 = ▂
 ramp-coreload-2 = ▃
@@ -345,7 +367,7 @@ format-volume = <ramp-volume> <label-volume>
 label-volume = %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted =  mute1
+label-muted =  mute
 label-muted-foreground = #666
 
 ramp-volume-0 = 
@@ -409,4 +431,10 @@ margin-top = 5
 margin-bottom = 5
 
 ; vim:ft=dosini
+
+[module/vpn]
+type = custom/script
+exec = /home/mhomuth/bin/checkvpn
+format-foreground = ${colors.darkred}
+interval = 1
 
