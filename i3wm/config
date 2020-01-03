@@ -290,7 +290,7 @@ exec --no-startup-id dunst -c ~/.config/dunst/dunstrc
 exec --no-startup-id xset dpms 0
 exec --no-startup-id nextcloud
 exec --no-startup-id sxhkd
-exec --no-startup-id picom
+exec --no-startup-id picom -c
 
 # stuff to set always
 exec_always --no-startup-id xset r rate $REPEAT_DELAY $REPEAT_RATE
