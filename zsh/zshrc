@@ -212,6 +212,7 @@ path=(
 	$HOME/.local/bin
 	$HOME/bin
 	/usr/sbin
+	/usr/lib/llvm/9/bin/
 	$JAVA_HOME/bin
 	$INTELLIJ_HOME/bin
 	$CROSSTOOL_NG/bin
