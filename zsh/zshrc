@@ -187,7 +187,7 @@ export QT_SELECT=qt5
 export MAKE382=/opt/make-3.82/bin
 
 # work
-export E2FACTORY_HOME=/opt/emlix/e2factory-2.3.17p0
+export E2FACTORY_HOME=/opt/emlix/e2factory-2.3.18
 if [[ "$(hostname)" == "mobile"* ]]; then
 	export E2TMPDIR=/data/tmp
 	export CCACHE_DIR=/data/android/.ccache
