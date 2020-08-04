@@ -1,5 +1,7 @@
 # -*- mode: sh -*-
 
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
 # run for interactive shells
 if [ ! -z "${DEBUG}" ]; then
 	echo -n "+++Reading .zshrc"
