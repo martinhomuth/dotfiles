@@ -6,9 +6,8 @@ declare -a graph_symbol
 graph_symbol=(" " "⡀" "⣀" "⣄" "⣤" "⣦" "⣴" "⣶" "⣷" "⣾" "⣿")
 
 declare -A cpu
-lscpu_var=("$(lscpu -p CPU,MAXMHZ)")
+cpu[cores]="$(lscpu -p=CPU,MAXMHZ | grep -v '#.*')"
 
-cpu[cores]="$(echo ${lscpu_var} | grep Core)"
 echo ${cpu[cores]}
 
 readarray cpu_stat < /proc/stat
