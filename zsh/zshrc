@@ -193,6 +193,7 @@ export MAKE382=/opt/make-3.82/bin
 # work
 export E2FACTORY_HOME=/opt/emlix/e2factory-2.3.18
 export CCACHE_DIR=/data/android/.ccache
+export E2TMPDIR=/data/tmp
 export USE_CCACHE=1
 export TOOLCHAINS_ROOT=${DATAPATH}/toolchains
 # odroid Android toolchains
@@ -223,9 +224,13 @@ path=(
 	$E2FACTORY_HOME/bin
 	$MAKE382
 	$TAF_UNIDOS/bin
-	/data/software/mxs-utils-2011.08.0/bin
 	$EXERCISM_HOME
 	$TURTL_HOME
 	$path
+	/data/software/mxs-utils-2011.08.0/bin
+	/data/android/platform-tools/
+	/opt/emlix/unidos-taf-1.2.4/bin
+	/opt/emlix/e2factory-2.3.18
+	/opt/emlix/unidos-tango/bin
 )
 

@@ -1,4 +1,9 @@
 # -*- mode: sh -*-
 
 # run for login shells after /etc/zshrc
+if [[ ! $DISPLAY ]] && [[ $XDG_VTNR -eq 1 ]] && [[ -z "${SSH_CONNECTION}" ]]; then
+	echo "Starting window manager"
+	export XKB_DEFAULT_OPTIONS=caps:ctrl_modifier
+	exec startx
+fi
 

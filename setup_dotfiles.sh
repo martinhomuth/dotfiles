@@ -6,7 +6,7 @@ set -x
 # doing so every every placeholder is replaced with the appropriate
 # values of the accompanying configuration files
 
-source /usr/include/mh_common.sh || exit 4
+source /usr/local/include/mh_common.sh || exit 4
 
 # read configuration values based on current branch
 BRANCH=$(git branch --show-current)
