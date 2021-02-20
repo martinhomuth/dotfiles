@@ -457,3 +457,11 @@ function extract_result {
 
 	tar xf "out/${res}/last/result.tar" -C "${dest}"
 }
+
+function vpn_up {
+	nmcli --ask c up b79d0113-966d-4495-934d-49269266eb48
+}
+
+function vpn_down {
+	nmcli c down b79d0113-966d-4495-934d-49269266eb48
+}
