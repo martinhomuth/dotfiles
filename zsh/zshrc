@@ -159,6 +159,7 @@ export TERMINAL="urxvt"
 export FEXPLORER="thunar"
 export PDFVIEW="mupdf"
 export LOFFICE="libreoffice"
+export MENUCONFIG_COLOR="mono"
 
 DATAPATH=/data
 DEVPATH=${DATAPATH}
