@@ -40,8 +40,7 @@ export XSESSION=i3wm
 
 # the zsh theme configuration
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="juanghurtado"
-#ZSH_THEME="lambda-mod"
+ZSH_THEME="avit"
 
 
 # history and completion
