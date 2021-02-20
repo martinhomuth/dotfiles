@@ -3,12 +3,18 @@
 # Directories
 alias C='clear'
 alias se="sudo -i ${USER} emacsclient -t"
-alias l='ls'
 alias ll='ls -lisa'
-alias la='ls -lisa'
 alias ..='cd ..'
 alias ...='cd ..\..'
 alias cD='cd ~/Downloads'
+alias z='zathura'
+alias rm='rm -vI'
+alias mv='mv -vi'
+
+# Colorize commands when possible.
+alias l='ls -hN --color=auto --group-directories-first'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
 
 # System
 alias lock='xscreensaver-command --lock'
