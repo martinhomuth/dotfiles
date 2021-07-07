@@ -160,6 +160,8 @@ export PDFVIEW="mupdf"
 export LOFFICE="libreoffice"
 export MENUCONFIG_COLOR="mono"
 
+export MENUCONFIG_COLOR="mono"
+
 DATAPATH=/data
 DEVPATH=${DATAPATH}
 ANDROIDPATH=${DATAPATH}/android
