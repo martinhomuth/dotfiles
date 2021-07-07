@@ -497,6 +497,11 @@ function prestart {
 	fi
 }
 
+# Changes into a directory and creates it if required
+function cdm {
+	mkdir -pv "$1" && cd "$1"
+}
+
 function vpn_up {
 	nmcli --ask c up b79d0113-966d-4495-934d-49269266eb48
 }
