@@ -458,6 +458,45 @@ function extract_result {
 	tar xf "out/${res}/last/result.tar" -C "${dest}"
 }
 
+function rgrep {
+	grep -rI "$@"
+}
+
+function emlixchat {
+	/usr/bin/ssh -t emlix "tmux attach"
+}
+
+# restarts a process
+# arg1: process name or PID
+# if the process name is given, prompt for the correct one (with dmenu if possible)
+function prestart {
+	local _findpid=0
+	# check for pid or name
+	[ -z "${1//[0-9]}" ] && [ -n "$1" ] || _findpid=1
+
+	if [ $_findpid -eq 1 ]; then
+		local _pids=($(pidof $1))
+		if [ ${#_pids[@]} -eq 1 ]; then
+			_PID=$_pids
+		else
+			warning "multiple instances of $1 running, please identify pid yourself (prompt tbd)"
+			return 2
+		fi
+	else
+		_PID=$1
+	fi
+
+	EXEC="$(cat /proc/$_PID/cmdline 2>/dev/null)"
+	kill $_PID 2>/dev/null
+	ret=$?
+	if [ ! $ret -eq 0 ]; then
+		error "Unable to kill process $_PID"
+		return 1
+	else
+		nohup $EXEC 2>/dev/null &
+	fi
+}
+
 function vpn_up {
 	nmcli --ask c up b79d0113-966d-4495-934d-49269266eb48
 }
