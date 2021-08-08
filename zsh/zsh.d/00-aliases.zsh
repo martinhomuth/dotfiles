@@ -47,7 +47,3 @@ alias Z='source ~/.zshrc'
 
 # news
 alias rss='newsbeuter'
-
-# browser
-alias qutebrowser='QT_AUTO_SCREEN_SCALE_FACTOR=0 QT_SCALE_FACTOR=1.5 qutebrowser'
-
