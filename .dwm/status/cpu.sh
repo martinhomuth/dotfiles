@@ -1,26 +1,45 @@
 #!/bin/bash
 
-[ -n "$(command -v lscpu)" ] || exit 1
+# Module showing CPU load as a changing bars.
+# Just like in polybar.
+# Each bar represents amount of load on one core since
+# last run.
+# Original by Luke Smith
 
-declare -a graph_symbol
-graph_symbol=(" " "⡀" "⣀" "⣄" "⣤" "⣦" "⣴" "⣶" "⣷" "⣾" "⣿")
+# Cache in tmpfs to improve speed and reduce SSD load
+cache=/tmp/cpubarscache
 
-declare -A cpu
-lscpu_var=("$(lscpu -p CPU,MAXMHZ)")
+case $BLOCK_BUTTON in
+	2) setsid -f "$TERMINAL" -e htop ;;
+	3) notify-send "🪨 CPU load module" "Each bar represents
+one CPU core";;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
 
-cpu[cores]="$(echo ${lscpu_var} | grep Core)"
-echo ${cpu[cores]}
+# id total idle
+stats=$(awk '/cpu[0-9]+/ {printf "%d %d %d\n", substr($1,4), ($2 + $3 + $4 + $5), $5 }' /proc/stat)
+[ ! -f $cache ] && echo "$stats" > "$cache"
+old=$(cat "$cache")
+printf "🪨"
+echo "$stats" | while read -r row; do
+	id=${row%% *}
+	rest=${row#* }
+	total=${rest%% *}
+	idle=${rest##* }
 
-readarray cpu_stat < /proc/stat
+	case "$(echo "$old" | awk '{if ($1 == id)
+		printf "%d\n", (1 - (idle - $3)  / (total - $2))*100 /12.5}' \
+		id="$id" total="$total" idle="$idle")" in
 
-OUTPUT=""
-for cpu in $(seq 0 $((num_cpu - 1))); do
-
-	val=${graph_symbol[10]}
-	OUTPUT="${OUTPUT}${val}"
-done
-
-echo "${OUTPUT}"
-
-
-
+		"0") printf "▁";;
+		"1") printf "▂";;
+		"2") printf "▃";;
+		"3") printf "▄";;
+		"4") printf "▅";;
+		"5") printf "▆";;
+		"6") printf "▇";;
+		"7") printf "█";;
+		"8") printf "█";;
+	esac
+done; printf "\\n"
+echo "$stats" > "$cache"
