@@ -338,8 +338,7 @@ function i {
 }
 
 function playground {
-	e2-build --playground $1
-	e2-playground --runinit $1
+	e2-build --playground $1 && e2-playground --runinit $1
 }
 
 function sgrep {
