@@ -164,10 +164,7 @@ export MENUCONFIG_COLOR="mono"
 
 DATAPATH=/data
 DEVPATH=${DATAPATH}
-ANDROIDPATH=${DATAPATH}/android
 export INTELLIJ_HOME='/opt/intellij'
-export ANDROID_STUDIO_HOME="${ANDROIDPATH}/android-studio"
-export ANDROID_SDK_ROOT="${ANDROIDPATH}/android-sdk"
 export XDG_CONFIG_HOME="${HOME}/.config/"
 export CPPUTEST_HOME='/opt/cpputest/'
 export SBT_HOME="/opt/sbt"
@@ -209,10 +206,7 @@ path=(
 	$HOME/.local/bin
 	$HOME/bin
 	$INTELLIJ_HOME/bin
-	$ANDROID_STUDIO_HOME/bin
 	$ODROID_ANDROID_TOOLCHAINS
-	$ANDROID_SDK_ROOT/platform-tools
-	$ANDROID_SDK_ROOT/tools
 	$E2FACTORY_HOME/bin
 	$MAKE382
 	$TAF_UNIDOS/bin
