@@ -2,7 +2,7 @@
 
 NMCLI=$(command -v nmcli)
 
-VPN_ACTIVE="🔒 VPN 🔒"
+VPN_ACTIVE="🔐 VPN 🔐"
 
 [ -n "${NMCLI}" ] || exit
 
