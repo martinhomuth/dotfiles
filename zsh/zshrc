@@ -36,7 +36,7 @@ export SHOW_LOAD=false
 # other: "*?_-.[]~=&;!#$%^(){}<>\\"
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}'
 
-export XSESSION=i3wm
+export XSESSION=dwm
 
 # the zsh theme configuration
 ZSH=$HOME/.oh-my-zsh
@@ -188,7 +188,7 @@ export QT_SELECT=qt5
 export MAKE382=/opt/make-3.82/bin
 
 # work
-export E2FACTORY_HOME=/opt/emlix/e2factory-2.3.18
+export E2FACTORY_HOME=/opt/emlix/e2factory-2.3.18p1
 export CCACHE_DIR=/data/android/.ccache
 export USE_CCACHE=1
 export TOOLCHAINS_ROOT=${DATAPATH}/toolchains
