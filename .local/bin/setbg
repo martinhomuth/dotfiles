@@ -9,5 +9,7 @@ bgloc="${XDG_DATA_HOME:-$HOME/.local/share/}/bg"
 # If pywal is installed, use it.
 #wal -i "$(readlink -f "$bgloc")" -o "${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
 
-xwallpaper --output DisplayPort-1 --zoom "$bgloc" --output DisplayPort-0 --zoom  "$bgloc"
+xwallpaper --output eDP-1 --zoom "$bgloc"
+xwallpaper --output DP-1 --zoom "$bgloc"
+xwallpaper --output HDMI-2 --zoom "$bgloc"
 
