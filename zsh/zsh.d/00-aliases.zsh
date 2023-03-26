@@ -38,7 +38,7 @@ alias rc='/tmp/go_c.out 2>/dev/null || echo "no file"'
 
 # Editing
 alias se="SUDO_EDITOR=\"emacsclient -t\" sudo -e"
-alias ee="emacsclient -t ~/.emacs.d/martin.org"
+alias ee="emacsclient -t ~/.emacs.d/${USER}.org"
 alias eX='emacsclient -t ~/.Xdefaults'
 
 # Zsh
