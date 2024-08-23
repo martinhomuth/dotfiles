@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Start various programs
+[ -n "$(command -v sxhkd)" ] && sxhkd &
+[ -n "$(command -v nextcloud)" ] && nextcloud &
+[ -n "$(command -v nm-applet)" ] && nm-applet &
+[ -n "$(command -v dwmblocks)" ] && dwmblocks &
+[ -n "$(command -v xautolock)" ] && xautolock -time 10 -detectsleep &
+[ -n "$(command -v seafile-applet)" ] && seafile-applet &
+
+[ -n "$(command -v redshift)" ] && redshift -l 52.5:13.4 &
+
+[ -f "${HOME}/.dotfiles/.local/bin/setbg" ] && "${HOME}/.dotfiles/.local/bin/setbg"
+
+[ -n "$(command -v dunst)" ] && dunst -config ${HOME}/.config/dunst/dunstrc &
