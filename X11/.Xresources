@@ -1,0 +1,87 @@
+! hard contrast: *background: #1d2021
+*background: #282828
+! soft contrast: *background: #32302f
+*foreground: #ebdbb2
+! Black + DarkGrey
+*color0:  #282828
+*color8:  #928374
+! DarkRed + Red
+*color1:  #cc241d
+*color9:  #fb4934
+! DarkGreen + Green
+*color2:  #98971a
+*color10: #b8bb26
+! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #fabd2f
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #83a598
+! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #d3869b
+! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #8ec07c
+! LightGrey + White
+*color7:  #a89984
+*color15: #ebdbb2
+
+! hard contrast: *background: #1d2021
+dwm.background: #282828
+! soft contrast: *background: #32302f
+dwm.foreground: #ebdbb2
+! Black + DarkGrey
+dwm.color0:  #282828
+dwm.color8:  #928374
+! DarkRed + Red
+dwm.color1:  #cc241d
+dwm.color9:  #fb4934
+! DarkGreen + Green
+dwm.color2:  #98971a
+dwm.color10: #b8bb26
+! DarkYellow + Yellow
+dwm.color3:  #d79921
+dwm.color11: #fabd2f
+! DarkBlue + Blue
+dwm.color4:  #458588
+dwm.color12: #83a598
+! DarkMagenta + Magenta
+dwm.color5:  #b16286
+dwm.color13: #d3869b
+! DarkCyan + Cyan
+dwm.color6:  #689d6a
+dwm.color14: #8ec07c
+! LightGrey + White
+dwm.color7:  #a89984
+dwm.color15: #ebdbb2
+
+! hard contrast: *background: #1d2021
+st.background: #282828
+! soft contrast: *background: #32302f
+st.foreground: #ebdbb2
+! Black + DarkGrey
+st.color0:  #282828
+st.color8:  #928374
+! DarkRed + Red
+st.color1:  #cc241d
+st.color9:  #fb4934
+! DarkGreen + Green
+st.color2:  #98971a
+st.color10: #b8bb26
+! DarkYellow + Yellow
+st.color3:  #d79921
+st.color11: #fabd2f
+! DarkBlue + Blue
+st.color4:  #458588
+st.color12: #83a598
+! DarkMagenta + Magenta
+st.color5:  #b16286
+st.color13: #d3869b
+! DarkCyan + Cyan
+st.color6:  #689d6a
+st.color14: #8ec07c
+! LightGrey + White
+st.color7:  #a89984
+st.color15: #ebdbb2
+
