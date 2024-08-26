@@ -13,3 +13,13 @@
 [ -f "${HOME}/.dotfiles/.local/bin/setbg" ] && "${HOME}/.dotfiles/.local/bin/setbg"
 
 [ -n "$(command -v dunst)" ] && dunst -config ${HOME}/.config/dunst/dunstrc &
+
+
+# need to figure out what system this is in and set the screenlayout accordingly
+case $HOST in
+	melchior*)
+		. "${HOME}/.screenlayout/desktop_2monitors.sh"
+		;;
+	*)
+		;;
+esac
