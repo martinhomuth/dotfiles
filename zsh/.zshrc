@@ -64,6 +64,11 @@ if [ -s ~/.zsh.d/zsh-autosuggestions/zsh-autosuggestions.zsh ] ; then
     source ~/.zsh.d/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
+# zsh auto completion
+if [ -s ~/.zsh.d/zsh-autocomplete/zsh-autocomplete.plugin.zsh ] ; then
+    source ~/.zsh.d/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+fi
+
 autoload -U compinit zrecompile promptinit
 compinit
 promptinit;
