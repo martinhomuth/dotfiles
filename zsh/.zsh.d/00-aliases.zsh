@@ -7,7 +7,6 @@ alias ll='ls -lisa'
 alias ..='cd ..'
 alias ...='cd ..\..'
 alias cD='cd ~/Downloads'
-alias z='zathura'
 alias rm='rm -vI'
 alias mv='mv -vi'
 

@@ -221,3 +221,8 @@ path=(
 
 # Backup
 export BORG_PASSCOMMAND="gpg --decrypt ${HOME}/borgbackup.key.gpg"
+
+
+eval "$(zoxide init zsh)"
+eval "$(atuin init zsh)"
+eval "$(direnv hook zsh)"
