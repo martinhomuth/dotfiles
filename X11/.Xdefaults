@@ -4,7 +4,7 @@ xterm*faceSize: 7
 Emacs.font: SourceCodePro-7
 
 !XFT
-Xft.dpi               : 180
+Xft.dpi               : 128
 Xft.lcdfilter         : lcddefault
 Xft.hintstyle         : hintslight
 Xft.hinting           : true
@@ -86,11 +86,3 @@ XTerm*fullscreen: never
 URxvt.keysym.C-Up : font-size:increase
 URxvt.keysym.C-Down : font-size:decrease
 URxvt.font-size.step : 1
-Xft.dpi			    : 150
-Xft.autohint		    : 0
-Xft.lcdfilter		    : lcddefault
-Xft.hintstyle		    : hintfull
-Xft.hinting		    : 1
-Xft.antialias		    : 1
-Xft.rgba		    : rgb
-
