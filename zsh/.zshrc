@@ -106,6 +106,7 @@ zle -N self-insert url-quote-magic
 # emacs keybindings
 bindkey -e
 bindkey "^?" backward-delete-char
+bindkey "^p" atuin-up-search
 typeset -A key
 
 key[Home]=${terminfo[khome]}
