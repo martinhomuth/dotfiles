@@ -2,6 +2,7 @@
 
 DWMLOG="${HOME}/.dwm/dwm.log"
 userresources="${HOME}/.Xresources"
+userdefaults="${HOME}/.Xdefaults"
 
 REPEAT_DELAY=250
 REPEAT_RATE=60
@@ -17,6 +18,7 @@ xset r rate ${REPEAT_DELAY} ${REPEAT_RATE}
 setxkbmap -option ctrl:nocaps
 
 [ -f "$userresources" ] && xrdb -merge "$userresources"
+[ -f "$userdefaults" ] && xrdb -merge "$userdefaults"
 
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  for f in /etc/X11/xinit/xinitrc.d/?* ; do
