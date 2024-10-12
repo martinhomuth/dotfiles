@@ -1,8 +1,3 @@
-URxvt.font	      : xft:Source Code Pro:size=7:antialias=true:hinting=true
-xterm*faceName: Source Code Pro,Source Code Pro Semibold
-xterm*faceSize: 7
-Emacs.font: SourceCodePro-7
-
 !XFT
 Xft.dpi               : 128
 Xft.lcdfilter         : lcddefault
@@ -41,8 +36,6 @@ xterm*scrollTtyOutput: false
 XTerm*eightBitInput:   false
 XTerm*eightBitOutput:  true
 XTerm*fullscreen: never
-
-*.font: xft:SourceCodePro:normal:size=8:antialias=true:hinting=true
 
 ! special
 *.foreground:   #373b41
