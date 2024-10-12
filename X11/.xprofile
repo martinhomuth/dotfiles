@@ -14,6 +14,5 @@
 
 [ -n "$(command -v dunst)" ] && dunst -config ${HOME}/.config/dunst/dunstrc &
 
-
 # need to figure out what system this is in and set the screenlayout accordingly
-. "${HOME}/.screenlayout/${HOST}.sh" || true
+. "${HOME}/.screenlayout/$(hostname).sh" || true
