@@ -12,3 +12,7 @@ XF86AudioLowerVolume
     pactl set-sink-volume 0 -5% && pkill dwmblocks && dwmblocks
 XF86AudioMute
     pactl set-sink-mute 0 toggle && pkill dwmblocks && dwmblocks
+XF86MonBrightnessDown
+    xbacklight -dec 10
+XF86MonBrightnessUp
+    xbacklight -inc 10
