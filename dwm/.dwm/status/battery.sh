@@ -26,4 +26,4 @@ else
 	ICON="${charge_icon} "
 fi
 
-echo -e "${ICON}${OUTPUT}"
+echo -e " ${ICON}${OUTPUT}"
