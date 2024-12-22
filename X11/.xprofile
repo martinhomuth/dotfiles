@@ -2,7 +2,7 @@
 
 # Start various programs
 [ -n "$(command -v sxhkd)" ] && sxhkd &
-[ -n "$(command -v nextcloud)" ] && nextcloud &
+[ -n "$(command -v nextcloud)" ] && nextcloud --background &
 [ -n "$(command -v nm-applet)" ] && nm-applet &
 [ -n "$(command -v dwmblocks)" ] && dwmblocks &
 [ -n "$(command -v xautolock)" ] && xautolock -time 10 -detectsleep &
