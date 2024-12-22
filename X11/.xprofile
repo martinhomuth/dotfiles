@@ -10,6 +10,8 @@
 
 [ -n "$(command -v redshift)" ] && redshift -l 52.5:13.4 &
 
+[ -n "$(command -v xss-lock)" ] && xss-lock --transfer-sleep-lock -- i3lock --nofork
+
 [ -f "${HOME}/.dotfiles/.local/bin/setbg" ] && "${HOME}/.dotfiles/.local/bin/setbg"
 
 [ -n "$(command -v dunst)" ] && dunst -config ${HOME}/.config/dunst/dunstrc &
