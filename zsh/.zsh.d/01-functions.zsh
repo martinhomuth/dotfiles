@@ -509,8 +509,3 @@ function vpn_down {
 	nmcli c down b79d0113-966d-4495-934d-49269266eb48
 }
 
-# copies the htaccess key of ame internal site to clipboard
-function amelogin {
-        local internal_path="/data/yocto/projects/audio-mobil/rse-ecu/rse-ecu-project/scripts/login-mhomuth"
-        tail -n1 ${internal_path} | cut -d'"' -f2 | xclip -selection clipboard
-}

@@ -38,10 +38,6 @@ export WORDCHARS='*?_-.[]~=&;!#$%^(){}'
 
 export XSESSION=dwm
 
-# the zsh theme configuration
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="avit"
-
 # history and completion
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -175,17 +171,7 @@ export CPPUTEST_HOME='/opt/cpputest/'
 export SBT_HOME="/opt/sbt"
 export TURTL_HOME="/opt/turtl"
 
-# File Extensions
-for ext in html org php com net no; do alias -s $ext=$BROWSER; done
-for ext in txt tex py PKGBUID; do alias -s $ext=$EDITOR; done
-for ext in png jpg gif; do alias -s $ext=$PICVIEW; done
-for ext in mpg wmv avi mkv; do alias -s $ext=$MOVPLAY; done
-for ext in wav mp3 ogg; do alias -s $ext=$SNDPLAY; done
-for ext in pdf; do alias -s $ext=$PDFVIEW; done
-for ext in odp ods odt; do alias -s $ext=$LOFFICE; done
-
 plugins=(git archlinux themes color-command)
-source $ZSH/oh-my-zsh.sh
 
 export QT_SELECT=qt5
 
@@ -222,7 +208,3 @@ path=(
 
 # Backup
 export BORG_PASSCOMMAND="gpg --decrypt ${HOME}/borgbackup.key.gpg"
-
-
-eval "$(zoxide init zsh)"
-eval "$(atuin init zsh)"
