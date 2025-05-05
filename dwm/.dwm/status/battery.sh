@@ -16,12 +16,12 @@ CAP=$(cat /sys/class/power_supply/BAT0/capacity)
 STATE=$(cat /sys/class/power_supply/BAT0/status)
 
 OUTPUT="${CAP}%"
-if [ ${STATE} = "Discharging" ]; then
-	[ ${CAP} -lt 100 ] && ICON="${discharge_icons[0]} "
-	[ ${CAP} -lt 75 ] && ICON="${discharge_icons[1]} "
-	[ ${CAP} -lt 50 ] && ICON="${discharge_icons[2]} "
-	[ ${CAP} -lt 25 ] && ICON="${discharge_icons[3]} "
-	[ ${CAP} -lt 10 ] && ICON="${discharge_icons[4]} "
+if [[ ${STATE} = "Discharging" ]]; then
+	[[ ${CAP} -lt 100 ]] && ICON="${discharge_icons[0]} "
+	[[ ${CAP} -lt 75 ]] && ICON="${discharge_icons[1]} "
+	[[ ${CAP} -lt 50 ]] && ICON="${discharge_icons[2]} "
+	[[ ${CAP} -lt 25 ]] && ICON="${discharge_icons[3]} "
+	[[ ${CAP} -lt 10 ]] && ICON="${discharge_icons[4]} "
 else
 	ICON="${charge_icon} "
 fi
