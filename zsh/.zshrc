@@ -116,3 +116,7 @@ path=(
 
 # Backup
 export BORG_PASSCOMMAND="gpg --decrypt ${HOME}/borgbackup.key.gpg"
+
+# prompt
+fpath=(${ZSHD_HOME}/prompts $fpath)
+autoload -Uz mh; mh
