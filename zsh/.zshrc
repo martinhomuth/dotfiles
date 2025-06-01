@@ -2,17 +2,6 @@
 
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
-# run for interactive shells
-if [ ! -z "${DEBUG}" ]; then
-	echo -n "+++Reading .zshrc"
-	[[ -o interactive ]] && echo -n " (for interactive use)"
-	echo .
-
-	# used for reporting how long loading takes
-	zmodload zsh/datetime
-	start=$EPOCHREALTIME
-fi
-
 if [ ! -f /usr/include/mh_common.sh ]; then
 	echo "ERROR: no mh_common.sh found"
 else
@@ -23,51 +12,11 @@ fi
 # no match results in an error.
 setopt CSH_NULL_GLOB
 
-# Prints the bang history before executing it
-# setopt HIST_VERIFY
-# export things that take longer than 5 seconds
-export REPORTTIME=5
-
-# don't show load in prompt by default
-export SHOW_LOAD=false
-
-# word chars
-# default is: *?_-.[]~=/&;!#$%^(){}<>
-# other: "*?_-.[]~=&;!#$%^(){}<>\\"
-export WORDCHARS='*?_-.[]~=&;!#$%^(){}'
-
-export XSESSION=dwm
-
 # history and completion
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 COMPLETION_WAITING_DOTS="true"
-export SUDO_EDITOR="emacsclient -t"
-
-# zsh completion
-if [ -s ~/.zsh.d/zsh-completions/zsh-completions.plugin.zsh ] ; then
-    source ~/.zsh.d/zsh-completions/zsh-completions.plugin.zsh
-fi
-
-# use zsh syntax highlighting if available
-if [ -s ~/.zsh.d/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] ; then
-    source ~/.zsh.d/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
-# zsh auto suggestions
-if [ -s ~/.zsh.d/zsh-autosuggestions/zsh-autosuggestions.zsh ] ; then
-    source ~/.zsh.d/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
-
-# zsh auto completion
-if [ -s ~/.zsh.d/zsh-autocomplete/zsh-autocomplete.plugin.zsh ] ; then
-    source ~/.zsh.d/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-fi
-
-autoload -U compinit zrecompile promptinit
-compinit
-promptinit;
 
 zstyle ':completion:::::' completer _complete _approximate
 zstyle ':completion:*' use-cache on
@@ -130,9 +79,10 @@ key[PageDown]=${terminfo[knp]}
 [[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" end-of-buffer-or-history
 
 
+ZSHD_HOME=${HOME}/.zsh.d
 # source .zsh.d
 setopt EXTENDED_GLOB
-for zshrc in ~/.zsh.d/[0-9][0-9]*[^~] ; do
+for zshrc in ${ZSHD_HOME}/[0-9][0-9]*[^~] ; do
     if [[ ! -z ${DEBUG} ]]; then
         echo +++ $(basename $zshrc)
     fi
@@ -145,64 +95,22 @@ if [ ! -z ${DEBUG} ]; then
 	printf "+++Loaded files in %0.4f seconds\n" $(($end-$start))
 fi
 
-# Default programs
-export T_EDITOR="emacsclient -t"
-export G_EDITOR="emacsclient -c"
-export EDITOR="emacsclient -t"
-export ALTERNATE_EDITOR="emacs --daemon && emacsclient -t"
-export PAGER="less"
-export BROWSER="qutebrowser"
-export MOVPLAY="mplayer"
-export PICVIEW="feh"
-export SNDPLAY="mplayer"
-export TERMINAL="urxvt"
-export FEXPLORER="thunar"
-export PDFVIEW="mupdf"
-export LOFFICE="libreoffice"
-export MENUCONFIG_COLOR="mono"
+autoload -U compinit zrecompile promptinit
+compinit;
+promptinit;
 
-export MENUCONFIG_COLOR="mono"
-
-DATAPATH=/data
-DEVPATH=${DATAPATH}
-export INTELLIJ_HOME='/opt/intellij'
-export XDG_CONFIG_HOME="${HOME}/.config/"
-export CPPUTEST_HOME='/opt/cpputest/'
-export SBT_HOME="/opt/sbt"
-export TURTL_HOME="/opt/turtl"
-
-plugins=(git archlinux themes color-command)
-
-export QT_SELECT=qt5
-
-# fallback make version
-export MAKE382=/opt/make-3.82/bin
-
-# work
-export E2FACTORY_HOME=/opt/emlix/e2factory-2.3.18p1
-export CCACHE_DIR=/data/android/.ccache
-export USE_CCACHE=1
-export TOOLCHAINS_ROOT=${DATAPATH}/toolchains
-# odroid Android toolchains
-#http://releases.linaro.org/archive/14.09/components/toolchain/binaries/gcc-linaro-aarch64-none-elf-4.9-2014.09_linux.tar.xz
-#http://releases.linaro.org/archive/14.04/components/toolchain/binaries/gcc-linaro-arm-none-eabi-4.8-2014.04_linux.tar.xz
-#https://releases.linaro.org/components/toolchain/binaries/6.3-2017.05/aarch64-linux-gnu/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-linux-gnu.tar.xz
-export ODROID_ANDROID_TOOLCHAINS=(
-	${TOOLCHAINS_ROOT}/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-linux-gnu/bin
-	${TOOLCHAINS_ROOT}/gcc-linaro-aarch64-none-elf-4.9-2014.09_linux/bin
-	${TOOLCHAINS_ROOT}/gcc-linaro-arm-none-eabi-4.8-2014.04_linux/bin
-)
+## OH MY ZSH
+if [ -s ${ZSH} ]; then
+    ZSH_THEME=avit
+    plugins=(archlinux)
+    source ${ZSH}/oh-my-zsh.sh
+else
+    ;
+fi
 
 path=(
 	$HOME/.local/bin
 	$HOME/bin
-	$INTELLIJ_HOME/bin
-	$ODROID_ANDROID_TOOLCHAINS
-	$E2FACTORY_HOME/bin
-	$MAKE382
-	$TAF_UNIDOS/bin
-	$SBT_HOME/bin
-	$TURTL_HOME
 	$path
 )
 
