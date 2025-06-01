@@ -29,6 +29,20 @@ fi
 alias systemctl='sudo systemctl'
 alias k='exit'
 
+# git
+alias gs="git status --short"
+alias gf="git fetch --all"
+alias gd="git diff --output-indicator-new=' ' --output-indicator-old=' '"
+alias ga="git add"
+alias gc="git commit"
+alias gP="git push"
+alias gF="git pull"
+alias gl="git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an  %ar%C(auto)  %D%n%s%n'"
+alias gb="git branch"
+alias gi="git init"
+alias gcl="git clone"
+alias gap="git add --patch"
+
 # interactive C
 alias go_libs='-lm'
 alias go_flags='-g -Wall -pedantic -Werror -include allhead.h'
