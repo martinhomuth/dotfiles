@@ -99,15 +99,6 @@ autoload -U compinit zrecompile promptinit
 compinit;
 promptinit;
 
-## OH MY ZSH
-if [ -s ${ZSH} ]; then
-    ZSH_THEME=avit
-    plugins=(archlinux)
-    source ${ZSH}/oh-my-zsh.sh
-else
-    ;
-fi
-
 path=(
 	$HOME/.local/bin
 	$HOME/bin
