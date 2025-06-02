@@ -8,10 +8,6 @@ else
 	source /usr/include/mh_common.sh
 fi
 
-# when globbing multiple items, one match results in success,
-# no match results in an error.
-setopt CSH_NULL_GLOB
-
 # history and completion
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -35,13 +31,32 @@ zstyle ':completion:*:manuals.(^1*)' insert-sections true
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' file-list list=20 insert=10
 
-# options
-setopt auto_cd
+## ZSH Options (https://zsh.sourceforge.io/Doc/Release/Options.html#Options)
+
+# when globbing multiple items, one match results in success,
+# no match results in an error.
+setopt CSH_NULL_GLOB
+
+# Do not print the directory stack after pushd or popd.
+setopt PUSHD_SILENT
+
+# Don’t push multiple copies of the same directory onto the directory stack.
+setopt PUSHD_IGNORE_DUPS
+
+# Make cd push the old directory onto the directory stack.
+setopt AUTO_PUSHD
+
+# If a command is issued that can’t be executed as a normal command, and the command is the name of a directory, perform
+# the cd command to that directory. This option is only applicable if the option SHIN_STDIN is set, i.e. if commands are
+# being read from standard input. The option is designed for interactive use; it is recommended that cd be used
+# explicitly in scripts to avoid ambiguity.
+setopt AUTO_CD
+
+# When writing out the history file, older commands that duplicate newer ones are omitted.
+setopt HIST_SAVE_NO_DUPS
 
 # don't set high nice values for background jobs by default
-setopt no_bg_nice
-# enable (which is default) function arg zero
-setopt function_arg_zero
+setopt NO_BG_NICE
 
 # autoloads
 autoload -U url-quote-magic
@@ -96,8 +111,8 @@ if [ ! -z ${DEBUG} ]; then
 fi
 
 autoload -U compinit zrecompile promptinit
-compinit;
-promptinit;
+compinit
+promptinit
 
 path=(
 	$HOME/.local/bin
