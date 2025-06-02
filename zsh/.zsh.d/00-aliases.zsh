@@ -9,6 +9,8 @@ alias ...='cd ..\..'
 alias cD='cd ~/Downloads'
 alias rm='rm -vI'
 alias mv='mv -vi'
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 # Colorize commands when possible.
 alias l='ls -hN --color=auto --group-directories-first'
@@ -60,3 +62,4 @@ alias Z='source ~/.zshrc'
 
 # news
 alias rss='newsbeuter'
+
