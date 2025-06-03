@@ -4,10 +4,6 @@ not_in_emacs() {
   [[ ! -n $EMACS ]]
 }
 
-not_in_cloud() {
-  ! fgrep -q ami_id /etc/motd 2>/dev/null
-}
-
 # this function checks if a command exists and returns either true
 # or false. This avoids using 'which' and 'whence', which will
 # avoid problems with aliases for which on certain weird systems. :-)
@@ -53,25 +49,10 @@ check_com() {
     return 1
 }
 
-# functions
-function history-all { history -E 1 }
-function setenv() { export $1=$2 }  # csh compatibility
-function rot13 () { tr "[a-m][n-z][A-M][N-Z]" "[n-z][a-m][N-Z][A-M]" }
-function maxhead() { head -n `echo $LINES - 5|bc` ; }
-function maxtail() { tail -n `echo $LINES - 5|bc` ; }
-function bgrep() { git branch -a | grep "$*" | sed 's,remotes/,,'; }
-
-# function to fix ssh agent
-function fix-agent() {
-    disable -a ls
-    export SSH_AUTH_SOCK=`ls -t1 $(find /tmp/ -uid $UID -path \\*ssh\\* -type s 2> /dev/null) | head -1`
-    enable -a ls
-}
-
 # Usage: simple-extract <file>
 # Using option -d deletes the original archive file.
 #f5# Smart archive extractor
-simple-extract() {
+extract() {
     emulate -L zsh
     setopt extended_glob noclobber
     local DELETE_ORIGINAL DECOMP_CMD USES_STDIN USES_STDOUT GZTARGET WGET_CMD
@@ -206,109 +187,33 @@ simple-extract() {
     return $RC
 }
 
-__archive_or_uri()
-{
+__archive_or_uri() {
     _alternative \
         'files:Archives:_files -g "*.(#l)(tar.bz2|tbz2|tbz|tar.gz|tgz|tar.xz|txz|tar.lzma|tar|rar|lzh|7z|zip|jar|deb|bz2|gz|Z|xz|lzma)"' \
         '_urls:Remote Archives:_urls'
 }
 
-_simple_extract()
-{
+_extract() {
     _arguments \
         '-d[delete original archivefile after extraction]' \
         '*:Archive Or Uri:__archive_or_uri'
 }
 
-# define a word
-function define(){
-    if [[ $# -ge 2 ]] then
-        echo "givedef: too many arguments" >&2
-        return 1
-    else
-        curl "dict://dict.org/d:$1"
-    fi
-}
-
-## TODO make these scripts instead of functions
-
 # Check if a URL is up
-function chk-url() {
+chk-url() {
     curl -sL -w "%{http_code} %{url_effective}\\n" "$1" -o /dev/null
 }
 
-function pub() {
-    scp $1 writequit:public_html/wq/pub/
-}
-
-# Check CLA status for ES pull requests
-function cla() {
-    curl -I "http://54.204.36.1:3000/verify/nickname/$1"
-}
-
-# Tunnel ES from somewhere to here locally on port 9400
-function es-tunnel() {
-    autossh -M0 $1 -L 9400:localhost:9200 -CNf
-}
-
-# Tunnel logstash/kibana locally
-function kibana-tunnel() {
-    autossh -M0 $1 -L 9292:localhost:9292 -CNf
-}
-
-# Delete a branch locally and on my (dakrone) fork
-function del-branch() {
-    git branch -d $1
-    git push dakrone :$1
-}
-
-# Fuzzy-check-out, check out the first local branch that matches
-function fco() {
-    git checkout `git branch | grep -i $1 | head -1 | tr -d " "`
-}
-
-# look up a process quickly
-function pg {
-    # doing it again afterwards for the coloration
-    ps aux | fgrep -i $1 | fgrep -v "grep -F" | fgrep -i $1
-}
-
-function in_emacs {
-  [[ -n $EMACS ]]
-}
-
-extract () {
-   if [ -f $1 ] ; then
-     case $1 in
-  	*.tar.bz2)	tar xvjf $1 && cd $(basename "$1" .tar.bz2) ;;
-	*.tar.gz)	tar xfvz $1 && cd $(basename "$1" .tar.gz) ;;
-	*.tar.xz)	tar Jxvf $1 && cd $(basename "$1" .tar.xz) ;;
-	*.bz2)		bunzip2 $1 && cd $(basename "$1" /bz2) ;;
-	*.rar)		unrar x $1 && cd $(basename "$1" .rar) ;;
-	*.gz)		gunzip $1 && cd $(basename "$1" .gz) ;;
-	*.tar)		tar xvf $1 && cd $(basename "$1" .tar) ;;
-	*.tbz2)		tar xvjf $1 && cd $(basename "$1" .tbz2) ;;
-	*.tgz)		tar xvzf $1 && cd $(basename "$1" .tgz) ;;
-	*.zip)		unzip $1 && cd $(basename "$1" .zip) ;;
-	*.Z)		uncompress $1 && cd $(basename "$1" .Z) ;;
-	*.7z)		7z x $1 && cd $(basename "$1" .7z) ;;
-	*)		echo "don't know how to extract '$1'..." ;;
-     esac
-  else
-    echo "'$1' is not a valid file!"
-  fi
-}
-
-function in_gentoo {
+in_gentoo() {
 	[[ -x /usr/bin/emerge ]]
 }
 
-function in_arch {
+in_arch() {
 	[[ -x /usr/bin/pacman ]]
 }
 
 # search for a package in the current distribution's package manager
-function s {
+s() {
 	if [ ! $# -eq 1 ]; then
 		echo "Usage: s <search string>"
 		return
@@ -323,7 +228,7 @@ function s {
 }
 
 # installs a package in the current distribution's package manager
-function i {
+i() {
 	if [ ! $# -ge 1 ]; then
 		echo "Usage: i <package>"
 		return
@@ -331,26 +236,28 @@ function i {
 	if in_gentoo; then
 		sudo emerge -av "$@"
 	elif in_arch; then
-		sudo pacman -S "$@"
+		sudo yay "$@"
 	else
 		echo "Unknown distribution"
 	fi
 }
 
-function playground {
-	e2-build --playground $1 && e2-playground --runinit $1
+sgrep() {
+    find . \
+	 -name .repo -prune \
+	 -o \
+	 -name .git -prune \
+	 -o  -type f -iregex '.*\.\(c\|h\|cc\|cpp\|S\|java\|xml\|sh\|mk\|aidl\|bb\|bbappend\|el)' \
+	 -print0 \
+	| xargs -0 grep --color -n "$@"
 }
 
-function sgrep {
-	find . -name .repo -prune -o -name .git -prune -o  -type f -iregex '.*\.\(c\|h\|cc\|cpp\|S\|java\|xml\|sh\|mk\|aidl\)' -print0 | xargs -0 grep --color -n "$@"
-}
-
-function bgrep {
+bgrep() {
 	find . -name .repo -prune -o -name .git -prune -o  -type f -iregex 'build-script' -print0 | xargs -0 grep --color -n "$@"
 }
 
 # emacs calling function replacing the simple alias
-function e {
+e() {
 	if [[ -n "$(command -v emacs)"  ]]; then
 		emacsclient -t "$@"
 	else
@@ -361,7 +268,7 @@ function e {
 # WIP
 # function that is intended to be used for toggling the debug output of the shell
 # during a function execution
-function toggledebug {
+toggledebug() {
 	RUN=/tmp/zsh-toggledebug
 
 	declare -i was_set=0
@@ -384,7 +291,7 @@ function toggledebug {
 }
 
 # ssh function to connect to emlix workstation
-function emlix {
+emlix() {
 	local vpn=0
 	declare -i ret=0
 
@@ -404,7 +311,7 @@ function emlix {
 }
 
 # ensure to not shutdown SSHed machines by accident
-function shutdown {
+shutdown() {
 	SHUTDOWN="sudo shutdown -fh now"
 	if [ ! "x${SSH_CLIENT}" = "x" -o ! "x${SSH_CONNECTION}" = "x" ]; then
 		echo -n "Are you sure you want to shutdown SSH'ed machine $(hostname)? (y/N) "
@@ -419,7 +326,7 @@ function shutdown {
 }
 
 # ensure to not rebooting SSHed machines by accident
-function reboot {
+reboot() {
 	REBOOT="sudo reboot"
 	if [ ! "x${SSH_CLIENT}" = "x" -o ! "x${SSH_CONNECTION}" = "x" ]; then
 		echo -n "Are you sure you want to reboot remote machine $(hostname)? (y/N) "
@@ -433,11 +340,11 @@ function reboot {
 	fi
 }
 
-function smount {
+smount() {
 	sudo mount "$@"
 }
 
-function sumount {
+sumount() {
 	sudo umount "$@"
 }
 
@@ -446,7 +353,7 @@ function sumount {
 # arg2: [optioal] location to extract to
 # if no destination is given, the result will be extracted to its own
 # location
-function extract_result {
+extract_result() {
 	local res=$1
 	local dest=${2:-"out/${res}/last"}
 	if [ -z ${res} ] || [ ! -d out/${res} ]; then
@@ -457,55 +364,82 @@ function extract_result {
 	tar xf "out/${res}/last/result.tar" -C "${dest}"
 }
 
-function rgrep {
+rgrep() {
 	grep -rI "$@"
 }
 
-function emlixchat {
-	/usr/bin/ssh -t emlix "tmux attach"
-}
-
-# restarts a process
-# arg1: process name or PID
-# if the process name is given, prompt for the correct one (with dmenu if possible)
-function prestart {
-	local _findpid=0
-	# check for pid or name
-	[ -z "${1//[0-9]}" ] && [ -n "$1" ] || _findpid=1
-
-	if [ $_findpid -eq 1 ]; then
-		local _pids=($(pidof $1))
-		if [ ${#_pids[@]} -eq 1 ]; then
-			_PID=$_pids
-		else
-			warning "multiple instances of $1 running, please identify pid yourself (prompt tbd)"
-			return 2
-		fi
-	else
-		_PID=$1
-	fi
-
-	EXEC="$(cat /proc/$_PID/cmdline 2>/dev/null)"
-	kill $_PID 2>/dev/null
-	ret=$?
-	if [ ! $ret -eq 0 ]; then
-		error "Unable to kill process $_PID"
-		return 1
-	else
-		nohup $EXEC 2>/dev/null &
-	fi
-}
-
 # Changes into a directory and creates it if required
-function cdm {
+cdm() {
 	mkdir -pv "$1" && cd "$1"
 }
 
-function vpn_up {
-	nmcli --ask c up b79d0113-966d-4495-934d-49269266eb48
+info() {
+    printf "\e[94mINFO:\e[39m %s\n" "$*" >&2
 }
 
-function vpn_down {
-	nmcli c down b79d0113-966d-4495-934d-49269266eb48
+error_exit() {
+    printf "\e[31mERROR:\e[39m %s\n" "$*" >&2
+    exit 1
 }
 
+error() {
+    printf "\e[31mERROR:\e[39m %s\n" "$*" >&2
+}
+
+warning() {
+    printf "\e[33mWARNING:\e[39m %s\n" "$*" >&2
+}
+
+check_tool() {
+	tool=$1
+	_err=0
+	command -v "${tool}" >/dev/null 2>&1 || _err=$((_err + 1))
+	which "${tool}" >/dev/null 2>&1 || _err=$((_err + 1))
+	pkg-config --list-all 2>/dev/null | grep -i "${tool}" >/dev/null || _err=$((_err + 1))
+	if [ ${_err} -eq 3 ]; then
+		error "$1 not available"
+	fi
+}
+
+check_tool_sudo() {
+	tool=$1
+	_err=0
+	sudo command -v "${tool}" >/dev/null 2>&1 || _err=$((_err + 1))
+	sudo which "${tool}" >/dev/null 2>&1 || _err=$((_err + 1))
+	sudo pkg-config --list-all 2>/dev/null | grep -i "${tool}" >/dev/null || _err=$((_err + 1))
+	if [ ${_err} -eq 3 ]; then
+		error "$1 not available"
+	fi
+}
+
+check_env() {
+	env=$1
+	if [ -z "${env}" ]; then
+		error "${env} not set"
+	fi
+}
+
+check_file() {
+	_file="$1"
+	if [ ! -f "${_file}" ]; then
+		error "$1 not available"
+	fi
+}
+
+yes_no() {
+	question=$1
+	done=0
+	printf "%s (y/N) " "${question}"
+	while [ $done -eq 0 ]; do
+		read -r input
+		if [ "x${input}" = "xy" ]; then
+			done=1
+			return 0
+		fi
+		if [ "x${input}" = "xn" ] || \
+		   [ "x${input}" = "x" ]; then
+			return 1
+		fi
+		printf "\n%s (y/N) " "${question}"
+	done
+}

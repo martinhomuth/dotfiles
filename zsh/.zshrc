@@ -1,12 +1,7 @@
 # -*- mode: sh -*-
 
+# This is (or at least was) required for tramp access
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
-
-if [ ! -f /usr/include/mh_common.sh ]; then
-	echo "ERROR: no mh_common.sh found"
-else
-	source /usr/include/mh_common.sh
-fi
 
 # history and completion
 HISTFILE=~/.histfile
