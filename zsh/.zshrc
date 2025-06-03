@@ -88,11 +88,6 @@ for zshrc in ${ZSHD_HOME}/[0-9][0-9]*[^~] ; do
 done
 unsetopt EXTENDED_GLOB
 
-if [ ! -z ${DEBUG} ]; then
-	end=$EPOCHREALTIME
-	printf "+++Loaded files in %0.4f seconds\n" $(($end-$start))
-fi
-
 autoload -U compinit zrecompile promptinit
 compinit
 promptinit
