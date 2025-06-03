@@ -30,5 +30,9 @@ export PDFVIEW="mupdf"
 export LOFFICE="libreoffice"
 export MENUCONFIG_COLOR="mono"
 
+# Backup
+export BORG_PASSCOMMAND="gpg --decrypt ${HOME}/borgbackup.key.gpg"
+
+
 
 
