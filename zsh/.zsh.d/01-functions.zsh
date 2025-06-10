@@ -236,7 +236,7 @@ i() {
 	if in_gentoo; then
 		sudo emerge -av "$@"
 	elif in_arch; then
-		sudo yay "$@"
+		yay "$@"
 	else
 		echo "Unknown distribution"
 	fi
