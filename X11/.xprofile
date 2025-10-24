@@ -8,6 +8,8 @@
 [ -n "$(command -v xautolock)" ] && xautolock -time 10 -detectsleep &
 [ -n "$(command -v seafile-applet)" ] && seafile-applet &
 
+[ -n "$(command -v picom)" ] && picom &
+
 [ -n "$(command -v redshift)" ] && redshift -l 52.5:13.4 &
 
 [ -n "$(command -v xss-lock)" ] && xss-lock --transfer-sleep-lock -- i3lock --nofork &
