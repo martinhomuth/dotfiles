@@ -443,3 +443,20 @@ yes_no() {
 		printf "\n%s (y/N) " "${question}"
 	done
 }
+
+prestart() {
+    local pname="$1"
+    local pids
+
+    pids=$(pgrep --exact --full "$pname")
+    if [ -n "${pids}" ]; then
+	echo "$pname running with pid(s): ${pids}"
+	kill "${pids}"
+	sleep 0.5
+    else
+	echo "$pname not running"
+    fi
+
+    echo -n "Starting $pname..."
+    nohup "$pname" >/dev/null 2>&1 &
+}
