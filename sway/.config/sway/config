@@ -26,9 +26,7 @@ set $term alacritty
 # Your preferred application launcher
 set $menu bemenu-run -c
 
-output HDMI-A-2 resolution 3940x2160 position 1920,0 scale 1.50
-output DP-2 resolution 1920x1080 position 0,0
-output HDMI-A-1 resolution 1920x1080 position 0,1080
+output HDMI-A-2 resolution 3940x2160 scale 1.50
 output * bg ~/.wallpapers/wp1.jpg fill
 
 exec swayidle -w \
@@ -215,8 +213,6 @@ gaps outer 5
 gaps inner 5
 #smart_borders no_gaps
 #smart_gaps on
-exec GDK_BACKEND=wayland
-exec CLUTTER_BACKEND=wayland
 
 for_window [title="scratch-emacs"] floating enable
 for_window [title="scratch-emacs"] resize set width 1880 px height 1030 px
