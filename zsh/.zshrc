@@ -64,3 +64,5 @@ path=(
 # prompt
 fpath=(${ZSHD_HOME}/prompts $fpath)
 autoload -Uz mh; mh
+
+command -v starship >/dev/null && eval "$(starship init zsh)"
