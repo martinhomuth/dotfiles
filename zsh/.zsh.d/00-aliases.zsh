@@ -7,7 +7,7 @@ alias ll='ls -lisa'
 alias ..='cd ..'
 alias ...='cd ..\..'
 alias cD='cd ~/Downloads'
-alias rm='rm -vI'
+alias rm='rm -I'
 alias mv='mv -vi'
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
@@ -28,7 +28,6 @@ elif [ -x /usr/bin/pacman ]; then
 else
 	alias update="echo unknown distribution"
 fi
-alias systemctl='sudo systemctl'
 alias k='exit'
 
 # git
@@ -63,3 +62,4 @@ alias Z='source ~/.zshrc'
 # news
 alias rss='newsbeuter'
 
+alias lc='labgrid-client'
