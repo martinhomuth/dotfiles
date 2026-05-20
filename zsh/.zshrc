@@ -61,8 +61,6 @@ path=(
 	$path
 )
 
-# prompt
-fpath=(${ZSHD_HOME}/prompts $fpath)
-autoload -Uz mh; mh
+eval "$(zoxide init zsh)"
 
 command -v starship >/dev/null && eval "$(starship init zsh)"
