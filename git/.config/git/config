@@ -1,7 +1,7 @@
 [user]
 name = "Martin Homuth"
-email = "martin@followthestack.tech"
-signingkey = 0C793706E16DFD39CD5E7235077EF72B4EE6E3AC
+email = "martin.homuth@emlix.com"
+signingkey = 2286FAEAF11E394639F2C440B6649A127D5C831A
 
 [commit]
 gpgSign = true
@@ -95,3 +95,5 @@ sort = -taggerdate
 branch = false
 tag = false
 
+[color]
+	ui = auto
